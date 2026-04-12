@@ -23,7 +23,7 @@ Cada agente/skill referencia conhecimento de:
 - **finance-vault/** — base de conhecimento financeiro (frameworks, glossário, instrumentos, valuation)
 - **tech-vault/** — base de conhecimento técnico (linguagens, frameworks, infra)
 
-A conexão é feita via **caminhos absolutos** (`C:/Users/Erick/Documents/Vault-Inc/Vault-Inc-Library/finance-vault/...`) na seção `Knowledge Sources` de cada agente. Os agentes têm `Read/Glob/Grep` no toolset para consultar esses arquivos em runtime.
+A conexão é feita via **caminhos relativos** (`finance-vault/...`, `tech-vault/...`) na seção `Knowledge Sources` de cada agente. Os agentes têm `Read/Glob/Grep` no toolset para consultar esses arquivos em runtime.
 
 ## Como instalar um agente
 

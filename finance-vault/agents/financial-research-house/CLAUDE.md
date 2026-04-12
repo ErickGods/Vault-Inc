@@ -44,7 +44,7 @@ A casa opera como um departamento de research integrado a um banco — combinand
 Todos os agentes desta casa têm acesso ao **finance-vault**:
 
 ```
-C:/Users/Erick/Documents/Vault-Inc/Vault-Inc-Library/finance-vault/
+finance-vault/
 ├── 01-fundamentals/
 ├── 02-investments/      # equities, fixed income, funds, alternatives, derivatives
 ├── 03-analysis/         # fundamental, technical, quantitative, macro
