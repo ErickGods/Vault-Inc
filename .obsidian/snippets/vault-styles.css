@@ -1,0 +1,114 @@
+/* ============================================
+   TECH VAULT — Custom Obsidian Styles
+   ============================================ */
+
+/* --- Custom Callouts by Category --- */
+
+.callout[data-callout="skill"] {
+  --callout-color: 46, 204, 113;
+  --callout-icon: lucide-code-2;
+}
+
+.callout[data-callout="devops"] {
+  --callout-color: 52, 152, 219;
+  --callout-icon: lucide-server;
+}
+
+.callout[data-callout="ai"] {
+  --callout-color: 155, 89, 182;
+  --callout-icon: lucide-brain;
+}
+
+.callout[data-callout="data"] {
+  --callout-color: 230, 126, 34;
+  --callout-icon: lucide-database;
+}
+
+.callout[data-callout="infra"] {
+  --callout-color: 0, 188, 212;
+  --callout-icon: lucide-network;
+}
+
+/* --- Status Badges via Tags --- */
+
+.tag[href*="active"] {
+  background-color: rgba(46, 204, 113, 0.2);
+  color: #27ae60;
+  border: 1px solid rgba(46, 204, 113, 0.4);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+}
+
+.tag[href*="draft"] {
+  background-color: rgba(241, 196, 15, 0.2);
+  color: #f39c12;
+  border: 1px solid rgba(241, 196, 15, 0.4);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+}
+
+.tag[href*="deprecated"] {
+  background-color: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.4);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.85em;
+}
+
+/* --- Code Blocks Enhancement --- */
+
+.markdown-preview-view pre {
+  border-left: 4px solid rgba(139, 92, 246, 0.5);
+  border-radius: 6px;
+}
+
+.markdown-preview-view pre code {
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+/* --- Typography --- */
+
+.markdown-preview-view h1 {
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+  border-bottom: 2px solid var(--background-modifier-border);
+  padding-bottom: 0.3em;
+}
+
+.markdown-preview-view h2 {
+  font-weight: 600;
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  color: var(--text-accent);
+}
+
+.markdown-preview-view h3 {
+  font-weight: 600;
+  margin-top: 1.2em;
+  margin-bottom: 0.4em;
+}
+
+/* --- Frontmatter styling --- */
+
+.frontmatter-container {
+  border-radius: 8px;
+  border: 1px solid var(--background-modifier-border);
+  padding: 8px 12px;
+  margin-bottom: 1.5em;
+}
+
+/* --- Wikilinks --- */
+
+.internal-link {
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
+.internal-link:hover {
+  text-decoration-style: solid;
+}

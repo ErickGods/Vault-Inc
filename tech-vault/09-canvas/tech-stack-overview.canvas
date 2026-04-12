@@ -1,0 +1,30 @@
+{
+	"nodes":[
+		{"id":"group-frontend","type":"group","label":"Frontend","x":-100,"y":0,"width":1400,"height":160},
+		{"id":"node-react","type":"file","file":"tech-vault/01-skills/frameworks/react.md","x":-60,"y":50,"width":250,"height":60},
+		{"id":"node-nextjs","type":"file","file":"tech-vault/01-skills/frameworks/nextjs.md","x":220,"y":50,"width":250,"height":60},
+		{"id":"node-svelte","type":"file","file":"tech-vault/01-skills/frameworks/svelte.md","x":500,"y":50,"width":250,"height":60},
+		{"id":"node-astro","type":"file","file":"tech-vault/01-skills/frameworks/astro.md","x":780,"y":50,"width":250,"height":60},
+		{"id":"node-htmx","type":"file","file":"tech-vault/01-skills/frameworks/htmx.md","x":1060,"y":50,"width":250,"height":60},
+		{"id":"group-backend","type":"group","label":"Backend","x":-100,"y":400,"width":620,"height":160},
+		{"id":"node-fastapi","type":"file","file":"tech-vault/01-skills/frameworks/fastapi.md","x":-60,"y":450,"width":250,"height":60},
+		{"id":"node-django","type":"file","file":"tech-vault/01-skills/frameworks/django.md","x":220,"y":450,"width":250,"height":60},
+		{"id":"group-database","type":"group","label":"Database","x":-100,"y":800,"width":1120,"height":160},
+		{"id":"node-postgresql","type":"file","file":"tech-vault/01-skills/databases/postgresql.md","x":-60,"y":850,"width":250,"height":60},
+		{"id":"node-redis","type":"file","file":"tech-vault/01-skills/databases/redis.md","x":220,"y":850,"width":250,"height":60},
+		{"id":"node-supabase","type":"file","file":"tech-vault/01-skills/databases/supabase.md","x":500,"y":850,"width":250,"height":60},
+		{"id":"node-mongodb","type":"file","file":"tech-vault/01-skills/databases/mongodb.md","x":780,"y":850,"width":250,"height":60},
+		{"id":"group-infrastructure","type":"group","label":"Infrastructure","x":-100,"y":1200,"width":900,"height":160},
+		{"id":"node-docker","type":"file","file":"tech-vault/01-skills/devops/docker.md","x":-60,"y":1250,"width":250,"height":60},
+		{"id":"node-kubernetes","type":"file","file":"tech-vault/01-skills/devops/kubernetes-basics.md","x":220,"y":1250,"width":250,"height":60},
+		{"id":"node-terraform","type":"file","file":"tech-vault/01-skills/devops/terraform.md","x":500,"y":1250,"width":250,"height":60},
+		{"id":"group-monitoring","type":"group","label":"Monitoring","x":-100,"y":1600,"width":400,"height":160},
+		{"id":"node-observability","type":"file","file":"tech-vault/01-skills/devops/observability.md","x":-60,"y":1650,"width":250,"height":60}
+	],
+	"edges":[
+		{"id":"edge-frontend-backend","fromNode":"group-frontend","toNode":"group-backend","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-backend-database","fromNode":"group-backend","toNode":"group-database","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-database-infrastructure","fromNode":"group-database","toNode":"group-infrastructure","fromSide":"bottom","toSide":"top"},
+		{"id":"edge-infrastructure-monitoring","fromNode":"group-infrastructure","toNode":"group-monitoring","fromSide":"bottom","toSide":"top"}
+	]
+}

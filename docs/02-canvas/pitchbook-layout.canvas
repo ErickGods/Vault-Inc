@@ -1,0 +1,72 @@
+{
+  "nodes": [
+    {
+      "id": "cover",
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "width": 420,
+      "height": 220,
+      "color": "1",
+      "text": "# {{company_name}}\n\n**Date:** {{pitch_date}}\n**Version:** {{document_version}}\n\n> *{{company_tagline}}*\n\n---\n*CONFIDENTIAL — For authorized recipients only*"
+    },
+    {
+      "id": "thesis",
+      "type": "text",
+      "x": 600,
+      "y": -260,
+      "width": 440,
+      "height": 260,
+      "color": "1",
+      "text": "## 💼 Investment Thesis\n\n**Opportunity:**\n{{investment_opportunity}}\n\n**Three Pillars:**\n1. {{pillar_1}}\n2. {{pillar_2}}\n3. {{pillar_3}}\n\n**Valuation Summary:** {{valuation_summary}}"
+    },
+    {
+      "id": "financials",
+      "type": "text",
+      "x": 600,
+      "y": 80,
+      "width": 460,
+      "height": 280,
+      "color": "1",
+      "text": "## 💰 Financial Highlights\n\n**3-Year Income Statement (USD):**\n\n| Metric | Year 1 | Year 2 | Year 3 |\n|--------|--------|--------|--------|\n| Revenue | {{rev_yr1}} | {{rev_yr2}} | {{rev_yr3}} |\n| EBITDA | {{ebitda_yr1}} | {{ebitda_yr2}} | {{ebitda_yr3}} |\n| Net Income | {{ni_yr1}} | {{ni_yr2}} | {{ni_yr3}} |\n\n**Key Ratios:** Gross Margin {{gross_margin}} | EBITDA Margin {{ebitda_margin}} | ROE {{roe}}"
+    },
+    {
+      "id": "market",
+      "type": "text",
+      "x": 1220,
+      "y": -320,
+      "width": 440,
+      "height": 280,
+      "color": "1",
+      "text": "## 🌐 Market Overview\n\n**TAM:** {{tam_value}}\n**SAM:** {{sam_value}}\n**SOM:** {{som_value}}\n**Market CAGR:** {{market_cagr}}\n\n**Competitive Landscape:**\n\n| Competitor | Strength | Weakness |\n|------------|----------|----------|\n| {{comp_1}} | {{comp1_strength}} | {{comp1_weakness}} |\n| {{comp_2}} | {{comp2_strength}} | {{comp2_weakness}} |\n| {{comp_3}} | {{comp3_strength}} | {{comp3_weakness}} |"
+    },
+    {
+      "id": "projections",
+      "type": "text",
+      "x": 1220,
+      "y": 80,
+      "width": 460,
+      "height": 280,
+      "color": "1",
+      "text": "## 📈 Projections\n\n| Scenario | Revenue | EBITDA | IRR |\n|----------|---------|--------|-----|\n| Bear | {{bear_revenue}} | {{bear_ebitda}} | {{bear_irr}} |\n| Base | {{base_revenue}} | {{base_ebitda}} | {{base_irr}} |\n| Bull | {{bull_revenue}} | {{bull_ebitda}} | {{bull_irr}} |\n\n**Key Assumptions:**\n- {{assumption_1}}\n- {{assumption_2}}\n- {{assumption_3}}"
+    },
+    {
+      "id": "risks",
+      "type": "text",
+      "x": 1840,
+      "y": -80,
+      "width": 440,
+      "height": 260,
+      "color": "2",
+      "text": "## ⚠️ Key Risks\n\n**Risk 1:** {{risk_1_name}}\n- Impact: {{risk_1_impact}}\n- Mitigation: {{risk_1_mitigation}}\n\n**Risk 2:** {{risk_2_name}}\n- Impact: {{risk_2_impact}}\n- Mitigation: {{risk_2_mitigation}}\n\n**Risk 3:** {{risk_3_name}}\n- Impact: {{risk_3_impact}}\n- Mitigation: {{risk_3_mitigation}}"
+    }
+  ],
+  "edges": [
+    { "id": "e1", "fromNode": "cover", "fromSide": "right", "toNode": "thesis", "toSide": "left" },
+    { "id": "e2", "fromNode": "cover", "fromSide": "right", "toNode": "financials", "toSide": "left" },
+    { "id": "e3", "fromNode": "thesis", "fromSide": "right", "toNode": "market", "toSide": "left" },
+    { "id": "e4", "fromNode": "financials", "fromSide": "right", "toNode": "projections", "toSide": "left" },
+    { "id": "e5", "fromNode": "market", "fromSide": "right", "toNode": "risks", "toSide": "left" },
+    { "id": "e6", "fromNode": "projections", "fromSide": "right", "toNode": "risks", "toSide": "left" }
+  ]
+}

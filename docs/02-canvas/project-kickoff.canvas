@@ -1,0 +1,82 @@
+{
+  "nodes": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "width": 400,
+      "height": 160,
+      "color": "6",
+      "text": "# 🚀 Project Kickoff\n\n**Project:** {{project_name}}\n**Date:** {{kickoff_date}}\n**Owner:** {{project_owner}}"
+    },
+    {
+      "id": "objective",
+      "type": "text",
+      "x": 600,
+      "y": -200,
+      "width": 420,
+      "height": 200,
+      "color": "4",
+      "text": "## 🎯 Objective\n\n**Goal:** {{project_goal}}\n\n**Success Criteria:**\n- {{criteria_1}}\n- {{criteria_2}}\n- {{criteria_3}}"
+    },
+    {
+      "id": "stakeholders",
+      "type": "text",
+      "x": 600,
+      "y": 80,
+      "width": 420,
+      "height": 220,
+      "color": "4",
+      "text": "## 👥 Stakeholders\n\n| Who | Role | Responsibility |\n|-----|------|----------------|\n| {{stakeholder_1}} | {{role_1}} | {{responsibility_1}} |\n| {{stakeholder_2}} | {{role_2}} | {{responsibility_2}} |\n| {{stakeholder_3}} | {{role_3}} | {{responsibility_3}} |"
+    },
+    {
+      "id": "scope",
+      "type": "text",
+      "x": 1200,
+      "y": -300,
+      "width": 400,
+      "height": 240,
+      "color": "1",
+      "text": "## 📐 Scope\n\n**In Scope:**\n- {{in_scope_1}}\n- {{in_scope_2}}\n- {{in_scope_3}}\n\n**Out of Scope:**\n- {{out_scope_1}}\n- {{out_scope_2}}"
+    },
+    {
+      "id": "risks",
+      "type": "text",
+      "x": 1200,
+      "y": 60,
+      "width": 440,
+      "height": 220,
+      "color": "2",
+      "text": "## ⚠️ Risks\n\n| Risk | Impact | Mitigation |\n|------|--------|------------|\n| {{risk_1}} | {{impact_1}} | {{mitigation_1}} |\n| {{risk_2}} | {{impact_2}} | {{mitigation_2}} |\n| {{risk_3}} | {{impact_3}} | {{mitigation_3}} |"
+    },
+    {
+      "id": "timeline",
+      "type": "text",
+      "x": 1800,
+      "y": -100,
+      "width": 440,
+      "height": 260,
+      "color": "5",
+      "text": "## 📅 Timeline & Milestones\n\n| Milestone | Target Date | Owner | Status |\n|-----------|-------------|-------|--------|\n| {{milestone_1}} | {{date_1}} | {{owner_1}} | {{status_1}} |\n| {{milestone_2}} | {{date_2}} | {{owner_2}} | {{status_2}} |\n| {{milestone_3}} | {{date_3}} | {{owner_3}} | {{status_3}} |\n| {{milestone_4}} | {{date_4}} | {{owner_4}} | {{status_4}} |"
+    },
+    {
+      "id": "stack",
+      "type": "text",
+      "x": 600,
+      "y": 380,
+      "width": 440,
+      "height": 260,
+      "color": "4",
+      "text": "## 🛠️ Technology Stack\n\n| Layer | Technology | Notes |\n|-------|-----------|-------|\n| Frontend | {{frontend_tech}} | {{frontend_notes}} |\n| Backend | {{backend_tech}} | {{backend_notes}} |\n| Database | {{db_tech}} | {{db_notes}} |\n| Infrastructure | {{infra_tech}} | {{infra_notes}} |\n| Auth | {{auth_tech}} | {{auth_notes}} |"
+    }
+  ],
+  "edges": [
+    { "id": "e1", "fromNode": "title", "fromSide": "right", "toNode": "objective", "toSide": "left" },
+    { "id": "e2", "fromNode": "title", "fromSide": "right", "toNode": "stakeholders", "toSide": "left" },
+    { "id": "e3", "fromNode": "objective", "fromSide": "right", "toNode": "scope", "toSide": "left" },
+    { "id": "e4", "fromNode": "stakeholders", "fromSide": "right", "toNode": "risks", "toSide": "left" },
+    { "id": "e5", "fromNode": "scope", "fromSide": "right", "toNode": "timeline", "toSide": "left" },
+    { "id": "e6", "fromNode": "risks", "fromSide": "right", "toNode": "timeline", "toSide": "left" }
+  ]
+}

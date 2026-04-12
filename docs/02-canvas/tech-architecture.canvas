@@ -1,0 +1,26 @@
+{
+	"nodes":[
+		{"id":"title","type":"text","x":0,"y":0,"width":420,"height":140,"color":"4","text":"# 🏗️ Tech Architecture\n\n**Project:** {{project_name}}\n**Version:** {{architecture_version}}\n**Updated:** {{last_updated}}"},
+		{"id":"client","type":"text","x":600,"y":-300,"width":380,"height":200,"color":"4","text":"## 🖥️ Client Layer\n\n**Browser:** {{browser_support}}\n**Mobile:** {{mobile_platform}}\n\n**Framework:** {{frontend_framework}}\n**State Mgmt:** {{state_management}}\n**Build Tool:** {{build_tool}}"},
+		{"id":"api-gw","type":"text","x":600,"y":60,"width":380,"height":200,"color":"4","text":"## 🔀 API Gateway\n\n**Routing:** {{routing_strategy}}\n**Auth:** {{auth_method}}\n**Rate Limiting:** {{rate_limit_config}}\n**Load Balancer:** {{load_balancer}}\n**Base URL:** {{api_base_url}}"},
+		{"id":"service-a","type":"text","x":1160,"y":-420,"width":340,"height":180,"color":"4","text":"## ⚙️ Service A\n\n**Name:** {{service_a_name}}\n**Responsibility:** {{service_a_responsibility}}\n**Port:** {{service_a_port}}\n**Language:** {{service_a_lang}}"},
+		{"id":"service-b","type":"text","x":1160,"y":-160,"width":340,"height":180,"color":"4","text":"## ⚙️ Service B\n\n**Name:** {{service_b_name}}\n**Responsibility:** {{service_b_responsibility}}\n**Port:** {{service_b_port}}\n**Language:** {{service_b_lang}}"},
+		{"id":"service-c","type":"text","x":1160,"y":100,"width":340,"height":180,"color":"4","text":"## ⚙️ Service C\n\n**Name:** {{service_c_name}}\n**Responsibility:** {{service_c_responsibility}}\n**Port:** {{service_c_port}}\n**Language:** {{service_c_lang}}"},
+		{"id":"database","type":"text","x":1700,"y":-340,"width":380,"height":220,"color":"1","text":"## 🗄️ Database\n\n**Type:** {{db_type}}\n**Engine:** {{db_engine}}\n**Schemas:** {{db_schemas}}\n**Backup Strategy:** {{backup_strategy}}\n**Replication:** {{db_replication}}"},
+		{"id":"cache-queue","type":"text","x":1700,"y":20,"width":380,"height":220,"color":"2","text":"## ⚡ Cache & Queue\n\n**Cache:** Redis\n- Usage: {{redis_usage}}\n- TTL: {{redis_ttl}}\n\n**Queue:** RabbitMQ\n- Usage: {{rabbitmq_usage}}\n- Queues: {{rabbitmq_queues}}"},
+		{"id":"infra","type":"text","x":600,"y":360,"width":440,"height":240,"color":"5","text":"## ☁️ Infrastructure\n\n**Cloud Provider:** {{cloud_provider}}\n**Region:** {{cloud_region}}\n**Containers:** {{container_platform}}\n**Orchestration:** {{orchestration}}\n**CI/CD:** {{cicd_platform}}\n**Monitoring:** {{monitoring_tools}}\n**Logging:** {{logging_stack}}"}
+	],
+	"edges":[
+		{"id":"e1","fromNode":"title","fromSide":"right","toNode":"client","toSide":"left"},
+		{"id":"e2","fromNode":"title","fromSide":"right","toNode":"api-gw","toSide":"left"},
+		{"id":"e3","fromNode":"client","fromSide":"right","toNode":"api-gw","toSide":"left"},
+		{"id":"e4","fromNode":"api-gw","fromSide":"right","toNode":"service-a","toSide":"left"},
+		{"id":"e5","fromNode":"api-gw","fromSide":"right","toNode":"service-b","toSide":"left"},
+		{"id":"e6","fromNode":"api-gw","fromSide":"right","toNode":"service-c","toSide":"left"},
+		{"id":"e7","fromNode":"service-a","fromSide":"right","toNode":"database","toSide":"left"},
+		{"id":"e8","fromNode":"service-b","fromSide":"right","toNode":"database","toSide":"left"},
+		{"id":"e9","fromNode":"service-b","fromSide":"right","toNode":"cache-queue","toSide":"left"},
+		{"id":"e10","fromNode":"service-c","fromSide":"right","toNode":"cache-queue","toSide":"left"},
+		{"id":"e11","fromNode":"api-gw","fromSide":"bottom","toNode":"infra","toSide":"top"}
+	]
+}

@@ -1,0 +1,61 @@
+{
+  "nodes": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": 0,
+      "y": 0,
+      "width": 400,
+      "height": 140,
+      "color": "6",
+      "text": "# 💡 Brainstorm Board\n\n**Theme:** {{brainstorm_theme}}\n**Date:** {{session_date}}\n**Facilitator:** {{facilitator}}"
+    },
+    {
+      "id": "ideas",
+      "type": "text",
+      "x": 560,
+      "y": -40,
+      "width": 400,
+      "height": 280,
+      "color": "4",
+      "text": "## 🧠 Ideas\n\n> **Quantidade > Qualidade** — capture tudo!\n\n1. {{idea_1}}\n2. {{idea_2}}\n3. {{idea_3}}\n4. {{idea_4}}\n5. {{idea_5}}\n6. {{idea_6}}"
+    },
+    {
+      "id": "pros",
+      "type": "text",
+      "x": 1120,
+      "y": -220,
+      "width": 400,
+      "height": 280,
+      "color": "1",
+      "text": "## ✅ Pros (by Idea)\n\n**Idea 1:** {{pro_idea1}}\n**Idea 2:** {{pro_idea2}}\n**Idea 3:** {{pro_idea3}}\n**Idea 4:** {{pro_idea4}}\n**Idea 5:** {{pro_idea5}}\n**Idea 6:** {{pro_idea6}}"
+    },
+    {
+      "id": "cons",
+      "type": "text",
+      "x": 1120,
+      "y": 140,
+      "width": 400,
+      "height": 280,
+      "color": "2",
+      "text": "## ❌ Cons (by Idea)\n\n**Idea 1:** {{con_idea1}}\n**Idea 2:** {{con_idea2}}\n**Idea 3:** {{con_idea3}}\n**Idea 4:** {{con_idea4}}\n**Idea 5:** {{con_idea5}}\n**Idea 6:** {{con_idea6}}"
+    },
+    {
+      "id": "decision",
+      "type": "text",
+      "x": 1680,
+      "y": -60,
+      "width": 420,
+      "height": 260,
+      "color": "5",
+      "text": "## 🏆 Decision\n\n**Chosen Idea:** {{chosen_idea}}\n\n**Justification:**\n{{decision_justification}}\n\n**Next Steps:**\n1. {{next_step_1}}\n2. {{next_step_2}}\n3. {{next_step_3}}\n\n**Owner:** {{decision_owner}}\n**Deadline:** {{decision_deadline}}"
+    }
+  ],
+  "edges": [
+    { "id": "e1", "fromNode": "title", "fromSide": "right", "toNode": "ideas", "toSide": "left" },
+    { "id": "e2", "fromNode": "ideas", "fromSide": "right", "toNode": "pros", "toSide": "left" },
+    { "id": "e3", "fromNode": "ideas", "fromSide": "right", "toNode": "cons", "toSide": "left" },
+    { "id": "e4", "fromNode": "pros", "fromSide": "right", "toNode": "decision", "toSide": "left" },
+    { "id": "e5", "fromNode": "cons", "fromSide": "right", "toNode": "decision", "toSide": "left" }
+  ]
+}

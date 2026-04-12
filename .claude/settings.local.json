@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p tech-vault/00-moc tech-vault/01-skills/languages tech-vault/01-skills/frameworks tech-vault/01-skills/databases tech-vault/01-skills/tools tech-vault/02-devops/ci-cd tech-vault/02-devops/containers tech-vault/02-devops/monitoring tech-vault/02-devops/iac tech-vault/02-devops/networking tech-vault/02-devops/security tech-vault/03-ai-ml/llm-patterns tech-vault/03-ai-ml/ai-frameworks tech-vault/03-ai-ml/mcp tech-vault/03-ai-ml/tools tech-vault/04-architecture/patterns tech-vault/04-architecture/decisions tech-vault/04-architecture/cloud-services tech-vault/04-architecture/messaging tech-vault/05-data-engineering/pipelines tech-vault/05-data-engineering/streaming tech-vault/05-data-engineering/storage tech-vault/05-data-engineering/transformation tech-vault/06-snippets tech-vault/07-references tech-vault/08-templates tech-vault/09-canvas)",
+      "Bash(mkdir -p .obsidian/snippets)",
+      "Bash(find C:/Users/Erick/Documents/Vault-Inc/Vault-Inc-Library/tech-vault/03-ai-ml/ai-frameworks -name *.md)",
+      "Bash(find C:/Users/Erick/Documents/Vault-Inc/Vault-Inc-Library/tech-vault/04-architecture/patterns -name *.md)",
+      "Bash(find C:/Users/Erick/Documents/Vault-Inc/Vault-Inc-Library/tech-vault/04-architecture/messaging -name *.md)",
+      "Bash(find C:/Users/Erick/Documents/Vault-Inc/Vault-Inc-Library/tech-vault/04-architecture/cloud-services -name *.md)",
+      "Bash(rm -rf finance-vault)",
+      "Bash(mkdir -p finance-vault/00-MOC)",
+      "Bash(mkdir -p finance-vault/01-fundamentals)",
+      "Bash(mkdir -p finance-vault/02-investments/equities)",
+      "Bash(mkdir -p finance-vault/02-investments/fixed-income)"
+    ]
+  }
+}

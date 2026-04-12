@@ -1,0 +1,151 @@
+{
+  "nodes": [
+    {
+      "id": "title",
+      "type": "text",
+      "x": -200,
+      "y": 0,
+      "width": 440,
+      "height": 120,
+      "color": "6",
+      "text": "# 🤖 Vault Inc — Agent Workflow\n\nEnd-to-end multi-agent pipeline from user intake to project closure."
+    },
+    {
+      "id": "user",
+      "type": "text",
+      "x": 360,
+      "y": 0,
+      "width": 300,
+      "height": 140,
+      "color": "5",
+      "text": "## 👤 User\n\n- Deposits intake brief\n- Defines project goals\n- Sets constraints & deadlines\n- **Output:** `vault/intake/{{project_slug}}.md`"
+    },
+    {
+      "id": "pm",
+      "type": "text",
+      "x": 780,
+      "y": 0,
+      "width": 320,
+      "height": 160,
+      "color": "6",
+      "text": "## 🗂️ PM Agent\n\n- Reads intake brief\n- Creates task breakdown\n- Assigns agents & priorities\n- **Output:** `vault/tasks/{{project_slug}}-tasks.md`"
+    },
+    {
+      "id": "lead",
+      "type": "text",
+      "x": 1220,
+      "y": -200,
+      "width": 320,
+      "height": 180,
+      "color": "6",
+      "text": "## 🧭 Lead Engineer\n\n- Validates system architecture\n- Creates Architecture Decision Records\n- Sets coding standards\n- **Output:** `vault/docs/adr/{{adr_id}}.md`"
+    },
+    {
+      "id": "uiux",
+      "type": "text",
+      "x": 1220,
+      "y": 60,
+      "width": 320,
+      "height": 180,
+      "color": "6",
+      "text": "## 🎨 UI/UX Agent\n\n> Runs BEFORE Frontend\n\n- Creates wireframes\n- Writes component specs\n- Defines design system\n- **Output:** `vault/design/{{project_slug}}/`"
+    },
+    {
+      "id": "backend",
+      "type": "text",
+      "x": 1220,
+      "y": 300,
+      "width": 320,
+      "height": 180,
+      "color": "6",
+      "text": "## ⚙️ Backend Agent\n\n- Builds REST/GraphQL APIs\n- Designs database schemas\n- Implements auth & security\n- **Output:** `vault/src/backend/{{project_slug}}/`"
+    },
+    {
+      "id": "devops",
+      "type": "text",
+      "x": 1220,
+      "y": 540,
+      "width": 320,
+      "height": 180,
+      "color": "6",
+      "text": "## 🚢 DevOps Agent\n\n- Docker containerization\n- CI/CD pipeline setup\n- Kubernetes orchestration\n- **Output:** `vault/infra/{{project_slug}}/`"
+    },
+    {
+      "id": "data",
+      "type": "text",
+      "x": 1220,
+      "y": 780,
+      "width": 320,
+      "height": 180,
+      "color": "6",
+      "text": "## 📊 Data Engineer\n\n- Builds data pipelines\n- ETL processes\n- Data warehouse schemas\n- **Output:** `vault/data/pipelines/{{project_slug}}/`"
+    },
+    {
+      "id": "frontend",
+      "type": "text",
+      "x": 1680,
+      "y": 60,
+      "width": 320,
+      "height": 180,
+      "color": "6",
+      "text": "## 🖥️ Frontend Agent\n\n- React / Next.js implementation\n- Consumes UI/UX specs\n- Component development\n- **Output:** `vault/src/frontend/{{project_slug}}/`"
+    },
+    {
+      "id": "ml",
+      "type": "text",
+      "x": 1680,
+      "y": 780,
+      "width": 320,
+      "height": 180,
+      "color": "6",
+      "text": "## 🤖 ML Engineer\n\n- Trains / fine-tunes models\n- LLM integration\n- RAG pipeline setup\n- **Output:** `vault/ml/{{project_slug}}/`"
+    },
+    {
+      "id": "qa",
+      "type": "text",
+      "x": 2160,
+      "y": 120,
+      "width": 340,
+      "height": 200,
+      "color": "1",
+      "text": "## ✅ QA Agent\n\n- Unit, integration & E2E tests\n- Performance benchmarks\n- Generates test reports\n- **Output:** `vault/reports/qa/{{project_slug}}-qa.md`"
+    },
+    {
+      "id": "security",
+      "type": "text",
+      "x": 2160,
+      "y": 400,
+      "width": 340,
+      "height": 200,
+      "color": "2",
+      "text": "## 🔒 Security Agent\n\n- OWASP Top-10 audit\n- Dependency vulnerability scan\n- Penetration test summary\n- **Output:** `vault/reports/security/{{project_slug}}-sec.md`"
+    },
+    {
+      "id": "closure",
+      "type": "text",
+      "x": 2660,
+      "y": 240,
+      "width": 340,
+      "height": 200,
+      "color": "5",
+      "text": "## 🏁 Closure\n\n- PM generates project summary\n- Archives all outputs\n- Retrospective notes\n- **Output:** `vault/reports/closure/{{project_slug}}-closure.md`"
+    }
+  ],
+  "edges": [
+    { "id": "e1",  "fromNode": "title",    "fromSide": "right",  "toNode": "user",     "toSide": "left" },
+    { "id": "e2",  "fromNode": "user",     "fromSide": "right",  "toNode": "pm",       "toSide": "left" },
+    { "id": "e3",  "fromNode": "pm",       "fromSide": "right",  "toNode": "lead",     "toSide": "left" },
+    { "id": "e4",  "fromNode": "pm",       "fromSide": "right",  "toNode": "uiux",     "toSide": "left" },
+    { "id": "e5",  "fromNode": "pm",       "fromSide": "right",  "toNode": "backend",  "toSide": "left" },
+    { "id": "e6",  "fromNode": "pm",       "fromSide": "right",  "toNode": "devops",   "toSide": "left" },
+    { "id": "e7",  "fromNode": "pm",       "fromSide": "right",  "toNode": "data",     "toSide": "left" },
+    { "id": "e8",  "fromNode": "uiux",     "fromSide": "right",  "toNode": "frontend", "toSide": "left" },
+    { "id": "e9",  "fromNode": "data",     "fromSide": "right",  "toNode": "ml",       "toSide": "left" },
+    { "id": "e10", "fromNode": "frontend", "fromSide": "right",  "toNode": "qa",       "toSide": "left" },
+    { "id": "e11", "fromNode": "backend",  "fromSide": "right",  "toNode": "qa",       "toSide": "left" },
+    { "id": "e12", "fromNode": "backend",  "fromSide": "right",  "toNode": "security", "toSide": "left" },
+    { "id": "e13", "fromNode": "devops",   "fromSide": "right",  "toNode": "security", "toSide": "left" },
+    { "id": "e14", "fromNode": "qa",       "fromSide": "right",  "toNode": "closure",  "toSide": "left" },
+    { "id": "e15", "fromNode": "security", "fromSide": "right",  "toNode": "closure",  "toSide": "left" }
+  ]
+}

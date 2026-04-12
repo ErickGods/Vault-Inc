@@ -1,0 +1,265 @@
+/* ============================================================
+   Finance Vault — Custom CSS Styles
+   Estilos customizados para o vault de finanças no Obsidian
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. CALLOUT CUSTOMIZATION
+   ------------------------------------------------------------ */
+
+/* Tip callout — verde para dicas práticas */
+.callout[data-callout="tip"] {
+  --callout-color: 46, 204, 113;
+  --callout-icon: lucide-lightbulb;
+  background-color: rgba(46, 204, 113, 0.08);
+  border-left: 4px solid #2ecc71;
+}
+
+.callout[data-callout="tip"] .callout-title {
+  color: #2ecc71;
+  font-weight: 600;
+}
+
+/* Warning callout — vermelho para alertas e riscos */
+.callout[data-callout="warning"] {
+  --callout-color: 231, 76, 60;
+  --callout-icon: lucide-alert-triangle;
+  background-color: rgba(231, 76, 60, 0.08);
+  border-left: 4px solid #e74c3c;
+}
+
+.callout[data-callout="warning"] .callout-title {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+/* Example callout — azul para exemplos e cálculos */
+.callout[data-callout="example"] {
+  --callout-color: 52, 152, 219;
+  --callout-icon: lucide-calculator;
+  background-color: rgba(52, 152, 219, 0.08);
+  border-left: 4px solid #3498db;
+}
+
+.callout[data-callout="example"] .callout-title {
+  color: #3498db;
+  font-weight: 600;
+}
+
+/* Quote callout — âmbar para citações e teses */
+.callout[data-callout="quote"] {
+  --callout-color: 243, 156, 18;
+  --callout-icon: lucide-quote;
+  background-color: rgba(243, 156, 18, 0.08);
+  border-left: 4px solid #f39c12;
+}
+
+.callout[data-callout="quote"] .callout-title {
+  color: #f39c12;
+  font-weight: 600;
+}
+
+/* Info callout — roxo para informações e referências */
+.callout[data-callout="info"] {
+  --callout-color: 155, 89, 182;
+  --callout-icon: lucide-info;
+  background-color: rgba(155, 89, 182, 0.08);
+  border-left: 4px solid #9b59b6;
+}
+
+.callout[data-callout="info"] .callout-title {
+  color: #9b59b6;
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------
+   2. FORMULA / CODE BLOCKS
+   ------------------------------------------------------------ */
+
+/* Blocos de código com fundo sutil colorido para fórmulas */
+.markdown-rendered pre {
+  background-color: rgba(52, 152, 219, 0.06);
+  border: 1px solid rgba(52, 152, 219, 0.15);
+  border-radius: 6px;
+  padding: 12px 16px;
+}
+
+.markdown-rendered code {
+  background-color: rgba(52, 152, 219, 0.1);
+  border-radius: 3px;
+  padding: 2px 5px;
+  font-size: 0.9em;
+}
+
+/* Inline code dentro de tabelas */
+.markdown-rendered td code {
+  background-color: rgba(52, 152, 219, 0.08);
+  font-size: 0.85em;
+}
+
+/* ------------------------------------------------------------
+   3. CONTEXT BADGES — Tags de contexto geográfico
+   ------------------------------------------------------------ */
+
+/* Tag "br" — verde para contexto Brasil */
+.tag[href="#br"],
+a.tag[href="#br"] {
+  background-color: rgba(46, 204, 113, 0.15);
+  color: #27ae60;
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+/* Tag "us" — azul para contexto EUA */
+.tag[href="#us"],
+a.tag[href="#us"] {
+  background-color: rgba(52, 152, 219, 0.15);
+  color: #2980b9;
+  border: 1px solid rgba(52, 152, 219, 0.3);
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+/* Tag "global" — cinza neutro */
+.tag[href="#global"],
+a.tag[href="#global"] {
+  background-color: rgba(149, 165, 166, 0.15);
+  color: #7f8c8d;
+  border: 1px solid rgba(149, 165, 166, 0.3);
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------
+   4. TABLES — Tabelas com visual limpo
+   ------------------------------------------------------------ */
+
+/* Cabeçalhos de tabela */
+.markdown-rendered th {
+  background-color: rgba(52, 73, 94, 0.08);
+  color: var(--text-normal);
+  font-weight: 600;
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 2px solid rgba(52, 73, 94, 0.2);
+}
+
+/* Células de tabela */
+.markdown-rendered td {
+  padding: 6px 12px;
+  border-bottom: 1px solid rgba(52, 73, 94, 0.08);
+}
+
+/* Linhas alternadas (zebra striping) */
+.markdown-rendered tr:nth-child(even) {
+  background-color: rgba(52, 73, 94, 0.03);
+}
+
+/* Hover em linhas de tabela */
+.markdown-rendered tr:hover {
+  background-color: rgba(52, 152, 219, 0.06);
+  transition: background-color 0.15s ease;
+}
+
+/* Tabela responsiva — scroll horizontal se necessário */
+.markdown-rendered table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 0.92em;
+}
+
+/* ------------------------------------------------------------
+   5. TYPOGRAPHY & SPACING — Tipografia do vault
+   ------------------------------------------------------------ */
+
+/* Títulos com espaçamento refinado */
+.markdown-rendered h1 {
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 2px solid rgba(52, 73, 94, 0.12);
+}
+
+.markdown-rendered h2 {
+  margin-top: 1.6em;
+  margin-bottom: 0.4em;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid rgba(52, 73, 94, 0.08);
+}
+
+.markdown-rendered h3 {
+  margin-top: 1.3em;
+  margin-bottom: 0.3em;
+}
+
+/* Separadores horizontais mais sutis */
+.markdown-rendered hr {
+  border: none;
+  border-top: 1px solid rgba(52, 73, 94, 0.1);
+  margin: 1.5em 0;
+}
+
+/* Blockquotes com estilo refinado */
+.markdown-rendered blockquote {
+  border-left: 3px solid rgba(52, 152, 219, 0.4);
+  padding-left: 16px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* Checklists — espaçamento melhorado */
+.markdown-rendered .task-list-item {
+  margin-bottom: 4px;
+}
+
+.markdown-rendered .task-list-item input[type="checkbox"] {
+  margin-right: 6px;
+}
+
+/* Links internos — destaque sutil */
+.internal-link {
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(52, 152, 219, 0.4);
+}
+
+.internal-link:hover {
+  border-bottom: 1px solid #3498db;
+  color: #3498db;
+}
+
+/* ------------------------------------------------------------
+   6. GRAPH VIEW HINTS
+   Configurações recomendadas para o Graph View:
+   - Agrupar por pasta (folder) para visualizar clusters temáticos
+   - Usar cores por tag: finance=azul, snippets=verde, templates=roxo
+   - Ajustar forces: repel=100, link-distance=60, link-force=0.5
+   - Ativar "Existing files only" para evitar nós de links quebrados
+   - Filtrar por path: "finance-vault/" para isolar o vault
+   ------------------------------------------------------------ */
+
+/* Cores dos nós no graph view (via CSS variables do Obsidian) */
+.graph-view.color-fill-tag {
+  opacity: 0.9;
+}
+
+/* Nó central mais visível */
+.graph-view.color-fill-focused {
+  color: #3498db;
+}
+
+/* Links no graph */
+.graph-view.color-line {
+  opacity: 0.3;
+}
+
+.graph-view.color-line-highlight {
+  opacity: 0.8;
+}
