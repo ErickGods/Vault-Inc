@@ -342,6 +342,13 @@ if __name__ == "__main__":
     print(f"Future tokens masked: {weights[0, 0, 0, 1:].sum().item():.6f}")
 ```
 
+> [!warning] NaN com Máscara Completa
+> Quando todos os keys de uma posição são mascarados (ex: `seq_len=1` ou casos extremos), `F.softmax` sobre um vetor de `-inf` produz `nan` em vez de zeros. Em produção, adicione após o softmax:
+> ```python
+> attn_weights = torch.nan_to_num(attn_weights, nan=0.0)
+> ```
+> Esta implementação educacional omite esse guarda para clareza.
+
 ---
 
 ### Multi-Head Attention em PyTorch
@@ -498,7 +505,7 @@ def inspect_attention_weights(
     # Ex BERT: (1, 12, 12, 12) — (batch, heads, seq, seq)
 
     # Extrair atenção da layer e head especificadas
-    attn_matrix = attentions[layer][0, head].numpy()  # (seq_len, seq_len)
+    attn_matrix = attentions[layer][0, head].cpu().numpy()  # (seq_len, seq_len)
 
     # Visualizar como heatmap
     fig, ax = plt.subplots(figsize=(10, 8))
