@@ -1,3 +1,15 @@
+---
+tags: [plan, completed, ai-ml, fundamentals]
+status: completed
+progress: 100
+goal: Criar 13 arquivos deep-technical sobre fundamentos de LLMs — transformers, tokenização, embeddings, pretraining, fine-tuning, RLHF, KV cache, quantização, inference engines, GPU, hardware especializado, VRAM estimation e benchmarks
+layer: tech-vault
+created: 2026-04-14
+updated: 2026-04-19
+tasks_total: 13
+tasks_done: 13
+---
+
 # AI/LLM Fundamentals — Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
