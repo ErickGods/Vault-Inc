@@ -1,3 +1,15 @@
+---
+tags: [plan, in-progress, library-expansion]
+status: in-progress
+progress: 15
+goal: Expandir a Vault-Inc-Library com ~73 novos arquivos em 4 camadas — docs, claude-vault core, claude-vault completo e integração entre vaults
+layer: multi-vault
+created: 2026-04-10
+updated: 2026-04-19
+tasks_total: 21
+tasks_done: 3
+---
+
 # Vault Inc Library Expansion — Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
