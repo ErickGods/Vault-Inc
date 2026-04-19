@@ -16,10 +16,55 @@ Este MOC cobre o domínio de Inteligência Artificial e Machine Learning com foc
 O foco aqui não é ML clássico (sklearn, redes neurais from scratch), mas a camada de aplicação sobre modelos fundacionais: como orquestrar, promover e deployar sistemas de IA úteis e confiáveis.
 
 > [!info] Cobertura
-> Esta seção (`03-ai-ml/`) contém 10 arquivos organizados em padrões de LLM, frameworks de IA, MCP e ferramentas de API.
+> Esta seção (`03-ai-ml/`) contém 23 arquivos organizados em padrões de LLM, frameworks de IA, MCP e ferramentas de API.
 
 > [!warning] Área em Rápida Evolução
 > Esta é a seção de maior volatilidade do vault. Verificar atualidade dos arquivos com frequência maior — o que era estado da arte há 6 meses pode estar obsoleto.
+
+---
+
+## 🔬 Fundamentos — Como LLMs Funcionam
+
+> [!info] Nova Seção — Adicionada em 2026-04-14
+> Conhecimento técnico profundo sobre arquitetura, treinamento, inferência e hardware. Base para criar skills e agentes especializados na Vault-Inc.
+
+### Arquitetura & Representação
+
+| Arquivo | Conteúdo | Status |
+|---------|---------|--------|
+| [[transformer-architecture]] | Self-attention, Multi-head, RoPE, SwiGLU, LayerNorm | ✅ active |
+| [[tokenization]] | BPE, WordPiece, SentencePiece, tiktoken, fertility rates | ✅ active |
+| [[embeddings]] | Espaço vetorial, cosine similarity, modelos, MRL, anisotropia | ✅ active |
+
+### Treinamento
+
+| Arquivo | Conteúdo | Status |
+|---------|---------|--------|
+| [[pretraining]] | Next-token loss, scaling laws Chinchilla, data pipelines | ✅ active |
+| [[fine-tuning-peft]] | LoRA, QLoRA, PEFT, fine-tuning vs RAG | ✅ active |
+| [[rlhf-alignment]] | RLHF, DPO, Constitutional AI, reward hacking | ✅ active |
+
+### Inferência & Otimização
+
+| Arquivo | Conteúdo | Status |
+|---------|---------|--------|
+| [[kv-cache-attention]] | KV cache, paged attention, GQA, Flash Attention | ✅ active |
+| [[quantization]] | INT4/INT8, GPTQ, AWQ, GGUF/llama.cpp | ✅ active |
+| [[inference-engines]] | vLLM, TensorRT-LLM, llama.cpp, speculative decoding | ✅ active |
+
+### Hardware
+
+| Arquivo | Conteúdo | Status |
+|---------|---------|--------|
+| [[gpu-architecture]] | CUDA cores, Tensor Cores, HBM, arithmetic intensity | ✅ active |
+| [[specialized-hardware]] | TPU, Groq LPU, Cerebras, Trainium, Apple ANE | ✅ active |
+| [[vram-estimation]] | Fórmulas, exemplos práticos, tabela de referência | ✅ active |
+
+### Avaliação
+
+| Arquivo | Conteúdo | Status |
+|---------|---------|--------|
+| [[benchmarks-evals]] | MMLU, HumanEval, Chatbot Arena, LLM-as-judge | ✅ active |
 
 ---
 
