@@ -1,3 +1,13 @@
+---
+tags: [plan, completed, tech-vault]
+status: completed
+progress: 100
+goal: Setup inicial da estrutura do tech-vault com MOCs, pastas e arquivos base
+layer: tech-vault
+created: 2026-04-05
+updated: 2026-04-05
+---
+
 # Tech Knowledge Vault — Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
