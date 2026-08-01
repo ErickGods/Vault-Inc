@@ -78,10 +78,11 @@ LIMIT 20
 
 ## 🔗 Conexões com Outros Vaults
 
-| Vault | Home | Domínio |
+| Casa | Índice mestre | Domínio |
 |-------|------|---------|
-| Tech Vault | [[tech-vault/00-moc/home\|🖥️ Tech Home]] | Skills técnicas, snippets, arquitetura, DevOps, AI/ML |
-| Finance Vault | [[finance-vault/00-MOC/_house\|💰 Finance Home]] | Investimentos, análise, finanças pessoais, macroeconomia |
+| Tech | [[tech/00-index/_house\|🖥️ Tech]] | Skills técnicas, snippets, arquitetura, DevOps, AI/ML |
+| Finance | [[finance/00-index/_house\|💰 Finance]] | Investimentos, análise, finanças pessoais, macroeconomia |
+| Quant | [[quant/00-index/_house\|📐 Quant]] | Fatores, estratégias, backtesting, risco |
 
 ---
 

@@ -1,79 +1,81 @@
----
-house: tech
-domain: 
-level: intermediate
-status: active
-updated: 2026-07-29
----
-# CLAUDE.md
+# Casa Tech — Vault Inc
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## Mandato
 
-## What This Is
+A casa tech faz engenharia de software, infraestrutura e dados. É a casa que **constrói**: o que
+sai daqui roda, é deployado, é monitorado e alguém é chamado quando quebra às três da manhã.
 
-Vault Inc. Library is a **multi-agent AI orchestration system** built on Claude Code, functioning as a lean software house. It combines three Obsidian knowledge vaults (tech, finance, project execution) with specialized AI agents that coordinate to deliver software projects.
+Toda entrega desta casa é código em produção, infraestrutura provisionada ou pipeline de dados
+em operação — ou a decisão técnica que sustenta uma delas.
 
-**Primary language:** Portuguese (BR) for all documentation, agent prompts, and project artifacts.
+## Como alcançar o conhecimento
 
-## Agent System
+Carregue `tech/00-index/_house.md` primeiro. Ele lista os oito domínios, o que cada um cobre e
+em que pasta as notas moram. Escolha o domínio, carregue o índice dele, e leia **apenas** as
+notas que a tarefa exige. Três saltos, e nunca varrer o vault com Glob às cegas.
 
-The orchestrator coordinates 10 specialized agents defined in `.claude/agents/`. Each agent has scoped responsibilities and tools:
+Atenção a um detalhe desta casa: **cinco dos oito domínios têm subpastas**. Para eles o
+`_house.md` dá só a raiz do domínio, e o caminho exato mora no **título da seção** dentro do
+índice do domínio. Parar no `_house.md` produz um caminho que não existe.
 
-- **PM** — project intake, task breakdown, agent dispatch
-- **Lead Engineer** — architecture, ADRs, technical review, conflict resolution
-- **UI/UX Designer** — wireframes, design system, component specs (must run before Frontend)
-- **Frontend Engineer** — React/Next.js, TypeScript, Tailwind implementation
-- **Backend Engineer** — APIs, database modeling, auth, business logic
-- **DevOps Engineer** — Docker, CI/CD, Kubernetes, infrastructure as code
-- **QA Engineer** — test plans, automated tests, bug reports
-- **Security Engineer** — OWASP audits, vulnerability scanning, compliance
-- **Data Engineer** — ETL/ELT pipelines, data modeling, Airflow/Prefect
-- **ML Engineer** — model training, LLM integration, RAG, MLOps
+Se a pergunta for sobre uma **preocupação** e não sobre um território — custo de inferência,
+custo de infraestrutura, segredos, idempotência, evolução de schema, cache, observabilidade,
+gerenciado contra self-hosted — pule para `tech/00-index/_topics.md`, que nomeia a nota por onde
+começar em cada tema.
 
-Agents are invoked via the `Agent` tool with `subagent_type` matching the agent name.
+Chegar a uma nota pelo campo `Related` de outra nota é legítimo **para aquela nota específica**.
+Mas necessidade **territorial** — "o que esta casa sabe sobre mensageria?", "quais notas cobrem
+orquestração?" — exige abrir o índice do domínio. `Related` mostra o que está **linkado**; o
+índice mostra o que **existe**. Confiar em `Related` para varrer um território produz um
+levantamento incompleto que parece completo, e num projeto isso vira decisão de arquitetura
+tomada sem saber que a casa já tinha a resposta.
 
-## Project Workflow
+## Padrões obrigatórios
 
-```
-1. User creates intake doc → vault/projects/intake/<project>.md
-2. PM reads intake → creates brief + task breakdown
-3. Agents execute tasks in dependency order
-4. Lead Engineer validates technical decisions
-5. QA + Security generate reports
-6. PM closes with summary
-```
+- **Decisão arquitetural vira ADR.** Os quatro critérios estão em `adr-guide`: difícil de
+  reverter, cruza times, trade-off não óbvio, equipe futura vai perguntar. ADR escrito depois
+  para justificar o que já foi feito não conta, e ADR parado em `proposed` há meses é pior que
+  ADR nenhum.
+- **Nenhuma escolha de tecnologia sem o que se perde declarado.** Toda nota desta casa carrega
+  uma seção de gotchas justamente porque o custo aparece depois. Recomendar stack sem nomear a
+  restrição que ela impõe é vender folheto.
+- **Cite as notas do vault que sustentam a decisão.** Wikilink para a nota, não paráfrase de
+  memória. Se a decisão depende de algo que o vault não cobre, isso é um buraco a declarar.
+- **UI/UX antes de frontend.** Especificação de interface precede implementação; o inverso
+  produz retrabalho, não velocidade.
+- **Conflito técnico entre agentes escala para o `lead-engineer`.** Nenhum agente escreve fora
+  do próprio escopo sem passar por ali.
+- **Linguagem:** português profissional; inglês técnico preservado para termos consagrados
+  (`deploy`, `commit`, `pipeline`, `throughput`, `trade-off`).
 
-To start a project:
-```
-PM, leia o intake em vault/projects/intake/<nome>.md e inicie o projeto
-```
+## Fronteira com a casa quant
 
-## Directory Structure Conventions
+`market-data-quant` cuida da **correção financeira** do dado — point-in-time, ajuste de
+proventos, sobrevivência, splits, corporate actions. **Especifica.**
 
-| Path | Purpose |
-|------|---------|
-| `vault/projects/intake/` | New project scope documents |
-| `vault/projects/<project>/tasks.md` | Task breakdown per project |
-| `vault/projects/<project>/summary.md` | Project closure report |
-| `vault/decisions/ADR-<n>-<title>.md` | Architecture Decision Records |
-| `vault/specs/ui-ux/` | UI/UX specifications |
-| `vault/specs/api/` | API specifications |
-| `vault/reports/qa/<project>-<date>.md` | QA test reports |
-| `vault/reports/security/<project>-<date>.md` | Security audit reports |
-| `vault/standups/<YYYY-MM-DD>.md` | Daily standup logs |
-| `projects/<project>/` | Actual project source code |
+`data-engineer` (tech) cuida do **transporte** — ingestão, orquestração, storage, SLA, custo.
+**Constrói.**
 
-## Knowledge Vaults
+A regra prática: se a pergunta é "esse número está certo?", é quant. Se é "esse número chega a
+tempo, íntegro e por um custo aceitável?", é tech. Um pipeline impecável servindo série com
+viés de sobrevivência é falha da casa quant; uma especificação correta servida com seis horas de
+atraso é falha desta.
 
-- **tech-vault/** — Technical knowledge base: languages, frameworks, DevOps, AI/ML, architecture patterns, code snippets, references, templates
-- **finance-vault/** — Financial knowledge base: investment analysis, asset classes, personal finance, market analysis
-- **claude-vault/agents/financial-research-house/** — Specialized financial research agents (Equity Research Analyst, Private Banker)
+Quando a fronteira ficar ambígua, **abra um Cross-Desk Request em vez de decidir sozinho.**
 
-## Collaboration Rules
+Ver `quant/00-index/_house.md` e `quant/CLAUDE.md` para o que aquela casa cobre.
 
-- Each agent documents daily work in standups
-- Architecture decisions always require an ADR
-- Cross-scope conflicts escalate to Lead Engineer
-- No agent writes outside its scope without Lead Engineer approval
-- UI/UX Designer must run before Frontend Engineer
-- Project intake uses the template at `.claude/agents/PROJECT_INTAKE_TEMPLATE.md`
+## Entregáveis
+
+Vão para o **repositório privado `Vault-Inc-Workspace`, nunca para este**:
+
+- Código de projeto: `projects/<projeto>/`
+- ADRs: `decisions/ADR-<n>-<titulo>.md`
+- Specs de UI/UX e de API: `specs/ui-ux/`, `specs/api/`
+- Reports de QA e de segurança: `reports/qa/<projeto>-<YYYY-MM-DD>.md`,
+  `reports/security/<projeto>-<YYYY-MM-DD>.md`
+- Cross-Desk Requests: `cross-desk/<YYYY-MM-DD>-<from>-<to>.md`
+
+Conhecimento durável que sair de um projeto **sobe para este vault** como nota nova, e o índice
+do domínio ganha uma linha — uma linha, e zero edições em qualquer prompt de agente. É esse
+passo que impede a casa de reaprender a cada projeto o que já custou caro uma vez.
