@@ -15,25 +15,19 @@ claude-md-snippets
 code-review-with-agents
 common-errors
 context-overflow
-dcf-valuation
 debugging-agents
 debugging-workflow
 documentation-generation
 extended-thinking
 finance-decision-canvas
 financial-analysis-with-claude
-gdp-and-growth
-hedging-strategies
 hook-snippets
 ide-integrations
-jcp
 knowledge-map-canvas
 mcp-catalog
 mcp-server-snippets
 memory-system
 messages-api-reference
-moats
-order-book
 performance-tips
 pitchbook-generation
 plan-mode
@@ -41,9 +35,7 @@ project-scaffolding
 prompt-caching-deep-dive
 prompt-engineering-for-claude
 qa-report-template
-roe-roic
 security-audit-template
-selic-and-monetary-policy
 settings-and-config
 skill-snippets
 subagents-parallel-execution
@@ -53,11 +45,9 @@ tech-stack-canvas
 third-party-tools
 ultrathink
 vault-inc-architecture
-wacc
 workflow-code-review
 workflow-deploy
 workflow-nova-nota
 workflow-novo-projeto
 workflow-research-investimento
 worktrees-workflow
-🗺️ Tech-Home

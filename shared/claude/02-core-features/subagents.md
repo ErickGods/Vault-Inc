@@ -27,7 +27,8 @@ O conceito de "fresh context" é central: quando um subagente é criado, ele com
 {
   "description": "Descrição curta do que este agente vai fazer (aparece nos logs)",
   "prompt": "Prompt completo e self-contained com todas as instruções",
-  "subagent_type": "general" | "claude-sonnet-4-6" | "claude-opus-4" | "claude-haiku-4",
+  "subagent_type": "general-purpose" | "quant-researcher" | "<agente-nomeado>",
+  "model": "sonnet" | "opus" | "haiku",  // override opcional; omitido, herda o do orquestrador
   "tools": ["Bash", "Read", "Write", "Edit", "Glob", "Grep"],  // subset de ferramentas
   "isolation": "none" | "worktree",
   "run_in_background": false | true
@@ -36,16 +37,22 @@ O conceito de "fresh context" é central: quando um subagente é criado, ele com
 
 ### Parâmetro `subagent_type`
 
-Define qual modelo será usado para o subagente:
+Define **qual definição de agente** será usada para o subagente — não o modelo. O valor é o nome
+de um agente: `general-purpose` (o catch-all para tarefas genéricas) ou um agente especializado
+definido em `.claude/agents/` (por exemplo `quant-researcher`, `backend-engineer`). Cada
+definição carrega seu próprio system prompt, conjunto de ferramentas e escopo.
 
-| Valor | Modelo | Uso Ideal |
-|-------|--------|-----------|
-| `general` | Mesmo modelo do orquestrador | Padrão — a maioria dos casos |
-| `claude-sonnet-4-6` | Claude Sonnet 4.6 | Tarefas de implementação, velocidade + qualidade |
-| `claude-opus-4` | Claude Opus 4 | Raciocínio complexo, decisões críticas |
-| `claude-haiku-4` | Claude Haiku 4 | Tarefas simples, alta velocidade, menor custo |
+| Valor | O que é | Uso Ideal |
+|-------|---------|-----------|
+| `general-purpose` | Agente genérico, sem especialização | Padrão — pesquisa e tarefas multi-step sem dono claro |
+| `quant-researcher` | Agente especializado (exemplo) em `.claude/agents/` | Tarefas do domínio daquele agente |
+| `<agente-nomeado>` | Qualquer definição em `.claude/agents/` | O agente cuja expertise casa com a tarefa |
 
-> [!tip] Use `claude-haiku-4` para tarefas mecânicas (renomear arquivos, gerar boilerplate, formatar dados). Reserve `claude-opus-4` para análises complexas onde raciocínio profundo importa. Na maioria dos casos, `general` ou `claude-sonnet-4-6` são ideais.
+O **modelo** é um parâmetro **separado** (`model`): escolhe-se a definição de agente por um campo
+e o modelo por outro. Se `model` for omitido, o subagente herda o modelo do orquestrador (ou o
+que a própria definição do agente declarar).
+
+> [!tip] Escolha a **definição de agente** pela expertise que a tarefa exige e ajuste o parâmetro `model` à parte: `haiku` para tarefas mecânicas (renomear arquivos, gerar boilerplate, formatar dados) e `opus` para análises complexas onde raciocínio profundo importa. Na maioria dos casos, `general-purpose` com o modelo herdado já resolve.
 
 ### Parâmetro `isolation`
 
