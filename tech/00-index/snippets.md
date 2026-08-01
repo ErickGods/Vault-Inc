@@ -10,6 +10,18 @@ updated: 2026-08-01
 Código pronto para copiar, não material de estudo: abra quando já souber o que fazer e faltar
 a forma exata. As quatro notas moram em `tech/06-snippets/`.
 
+> **A regra de divisão, porque este é o único domínio partido por linguagem.** Todos os outros
+> domínios da casa são partidos por **problema**; este é partido por bash, docker, python e SQL.
+> Esse eixo só se sustenta enquanto ninguém escrever na quinta linguagem, e já há sobreposição
+> real: `sql-snippets` e [[database-optimization]] descrevem o mesmo `EXPLAIN (ANALYZE, BUFFERS)`,
+> `docker-snippets` e [[docker-compose-patterns]] o mesmo `depends_on` com healthcheck.
+>
+> O critério, para não ser rederivado a cada nota nova: **a nota de tecnologia explica e avisa; o
+> snippet é o bloco que se cola sem ler.** Se o texto precisa justificar um trade-off, ele
+> pertence a `tech/01-skills/`, não aqui. Na dúvida, o conhecimento vai para a nota e o snippet
+> linka para ela — conteúdo duplicado em dois índices passa em toda verificação de completude,
+> porque ela conta notas e não consegue ver que duas dizem a mesma coisa.
+
 | Nota | O que responde | Nível |
 |---|---|---|
 | [[bash-snippets]] | Escrever script de automação que falha alto em vez de falhar em silêncio: o boilerplate com `set -euo pipefail`, `trap` de cleanup em EXIT/ERR/INT/TERM, logger com timestamp e a função `require` que aborta se faltar dependência. Traz operações de arquivo (backup datado, rsync com log, achar arquivo acima de N MB), gestão de processo (timeout distinguindo o exit code 124, shutdown gracioso TERM antes de KILL, PID tracking, watch de memória), processamento de texto com awk, sed e jq (soma de coluna, filtro por limiar, merge de JSON, CSV para JSON), rede (curl com backoff exponencial, túnel SSH, checagem de porta por `/dev/tcp`), leitura linha a linha segura com `IFS= read -r`, e cron com lock por `flock` mais wrapper que notifica em falha. Aviso de portabilidade: `local -n` exige Bash 4.3+ e o macOS entrega 3.x por padrão. | advanced |
