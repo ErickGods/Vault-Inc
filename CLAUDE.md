@@ -146,13 +146,16 @@ escrever.
 | Casa | Notas | Índices | Agentes | Skills |
 |---|---|---|---|---|
 | quant | 7 | completos | 4 | `hypothesis-test`, `backtest-protocol` |
-| finance | 74 | completos | 6 | `equity-initiation`, `dcf-valuation` |
-| tech | 89 | **parciais — `skills` e `devops` apenas** | 9, **ainda não religados** | — |
+| finance | 73 | completos | 6 | `equity-initiation`, `dcf-valuation` |
+| tech | 89 | completos | 9, **ainda não religados** | — |
 
-**A casa tech está incompleta e isso é conhecido.** Seis índices de domínio, `_house.md` e
-`_topics.md` faltam, e os 9 agentes ainda não têm o bloco de roteamento. Até que tenham, eles não
-alcançam o conhecimento do tech pelos três saltos — trate qualquer trabalho na casa tech como
-manual, e não assuma que o índice cobre o que você precisa.
+As três casas têm índice mestre, índice de temas transversais e mandato. **As casas quant e
+finance foram validadas contra agentes reais** executando tarefas de verdade — o teste é invocar
+um agente com uma demanda concreta e exigir o rastro exato de arquivos abertos. Ele já revelou
+dois defeitos que nenhuma verificação estática pegaria.
 
-`shared/claude/` também está pendente: o conteúdo sobre operar o Claude Code segue em
-`claude-vault/`, fora da estrutura de casas.
+**Os 9 agentes da casa tech ainda não têm o bloco de roteamento** — eles não citam nota nenhuma,
+nem por nome nem por índice. Até serem religados, trate trabalho na casa tech como manual.
+
+`shared/claude/` segue pendente: o conteúdo sobre operar o Claude Code está em `claude-vault/`,
+fora da estrutura de casas.

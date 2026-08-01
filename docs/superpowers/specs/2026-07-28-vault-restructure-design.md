@@ -303,6 +303,24 @@ Achado do mesmo teste, e é estrutural. O agente precisou afirmar que o vault **
 
 **Ausência não é verificável em três saltos.** Um agente que precise declarar lacuna de conhecimento — e a casa exige isso nos disclosures — está fazendo uma afirmação mais cara do que o índice suporta. Não há correção óbvia; registrar como limitação conhecida e exigir que a incerteza seja rotulada, não escondida.
 
+### O formato foi desenhado sobre um vault de finanças, e a casa tech expôs quatro limites
+
+As três casas têm a mesma forma de índice. Construir a terceira — 89 notas de engenharia — revelou onde o desenho aperta, e nenhum dos quatro casos é defeito de execução.
+
+**1. A coluna "Onde começar" pressupõe que exista uma nota-hub.** Em finanças, preocupação transversal tem dono natural: tributação tem `tax-optimization-br`, custo tem `compound-interest`. Em engenharia, **"input não confiável" é tratado em 11 notas de 5 domínios e nenhuma o possui** — cada uma carrega sua instância como gotcha (magic bytes em `media-pipeline`, path traversal em `mcp-servers-guide`, `X-Forwarded-For` em `reverse-proxy`, RLS em `supabase`). O formato obriga a nomear um hub, e a resposta menos errada roteia mal quem pergunta sobre upload de arquivo.
+
+A causa é estrutural: **conhecimento financeiro concentra em hubs; conhecimento de engenharia distribui em gotchas.** Falta ao formato um slot para "este tema é real e não tem dono".
+
+**2. Não existe eixo de decaimento.** `compound-interest` continua correta em 2040. `planetscale` registra o fim do free tier em 2024, `rabbitmq` registra mirrored queues depreciadas desde a 3.9, `autogen` registra incompatibilidade entre 0.2 e 0.4+. O MOC antigo do ai-ml avisava que a área é "de maior volatilidade — o que era estado da arte há 6 meses pode estar obsoleto", e apagá-lo apagou o único lugar que dizia isso.
+
+A coluna "O que responde" diz o que a nota responde, **nunca por quanto tempo a resposta continua verdadeira**. Um agente que abrir `inference-engines` em 2027 não recebe sinal nenhum de que aquele domínio apodrece dez vezes mais rápido que `big-o-notation`.
+
+**3. Uma linha em um índice força o corte por camada, não por coisa.** `docker` está em `skills/tools` e `docker-compose-patterns` em `devops/containers`. `claude-code` em `skills/tools` e `claude-code-superpowers` em `ai-ml/ai-frameworks`. `kafka` em `data-engineering/streaming` enquanto o problema de semântica de entrega que ele encarna mora em `architecture/messaging`.
+
+Em finanças, uma debênture é uma debênture independente de quem pergunta. Aqui a mesma tecnologia pertence genuinamente a dois domínios, e o `_topics.md` faz trabalho de reparo — 3 das 10 linhas existem sobretudo para reconectar notas que o corte por domínio separou.
+
+**4. `Nível` não é apenas pouco informativo nesta casa, é provadamente morto.** As 3 exceções aos 86 `advanced` não são outro nível: são os templates, que não declaram o campo. **100% dos valores declarados são `advanced`**, impressos em toda linha de 8 índices. Custo de token com zero bit de roteamento. Para a casa tech, o honesto é remover a coluna, não normalizá-la.
+
 ### Contagens no índice mestre defasam, e a regra é avaliada contra elas
 
 O `_house.md` afirmava "investments em 16 linhas" e "analysis em 11" ao argumentar que a estrutura ainda cabia. Medido: **17 e 15** — o Estágio B adicionou seis notas e o texto não acompanhou.
