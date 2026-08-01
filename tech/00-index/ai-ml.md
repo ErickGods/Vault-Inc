@@ -7,7 +7,13 @@ updated: 2026-08-01
 
 # Índice — IA e Machine Learning
 
-## Fundamentos — `tech/03-ai-ml/fundamentals/`
+> As quatro primeiras subseções declaram **o mesmo caminho**, e isso é proposital: a pasta
+> `fundamentals/` é uma só, mas guarda quatro territórios que se pergunta separadamente. O
+> título da subseção faz dois trabalhos independentes — roteamento (permitir pular o bloco
+> inteiro) e resolução de caminho (permitir abrir o arquivo). Aqui o roteamento foi subdividido
+> e o caminho permaneceu constante. Não "conserte" a repetição.
+
+## Fundamentos — arquitetura e treino — `tech/03-ai-ml/fundamentals/`
 
 | Nota | O que responde | Nível |
 |---|---|---|
@@ -17,12 +23,27 @@ updated: 2026-08-01
 | [[pretraining]] | Dimensionar o que custa treinar do zero — e entender por que quase nunca vale: cross-entropy de next-token, perplexidade, e o pipeline de dados com dedup por MinHash LSH, filtros de qualidade e decontamination. O núcleo é Chinchilla, a lei de escala que mostra que parâmetros e tokens crescem juntos e que o GPT-3 estava dramaticamente subtreinado, com a regra dos ~20 tokens por parâmetro e a razão pela qual mais tokens ganham de mais parâmetros quando o modelo vai para inferência. Traz cálculo de FLOPs com estimativa de dias e custo, ZeRO, tensor e pipeline parallelism, gradient checkpointing e mixed precision. | advanced |
 | [[fine-tuning-peft]] | Responder primeiro se fine-tuning é mesmo necessário — a tabela contra prompting e RAG é o portão, e a regra que decide é curta: "o modelo sabe X?" é RAG, "o modelo responde no formato Y?" é fine-tuning. Depois executa: a álgebra de posto baixo do LoRA, alpha scaling, o guia de rank (r=8 como padrão, cada duplicação custa o dobro de VRAM e tempo), quais projeções recebem adapter, e QLoRA com NF4, double quantization e paged optimizers — que leva um Llama 3 8B de ~60 GB para ~10 GB. Traz SFT completo com TRL, merge de adapter para serving, e o sintoma de learning rate alto: training loss caindo enquanto a validation explode. | advanced |
 | [[rlhf-alignment]] | Ensinar o modelo a preferir a resposta melhor em vez de só imitar demonstração: as três etapas do RLHF (SFT, reward model Bradley-Terry, PPO) e por que DPO substituiu PPO na maioria dos projetos — sem reward model para treinar e manter, sem a instabilidade do loop de RL. Cobre ORPO, GRPO, SimPO e Constitutional AI, treino DPO completo com TRL, montagem do dataset de preferências e RLAIF com LLM-as-judge. O centro conceitual é a Lei de Goodhart aplicada: reward hacking é inevitável e aparece como verbosidade, sycophancy e abuso de formatação — mais o **alignment tax**, a perda em benchmark de conhecimento que o alinhamento cobra e que precisa ser monitorada. | advanced |
+
+## Fundamentos — inferência e serving — `tech/03-ai-ml/fundamentals/`
+
+| Nota | O que responde | Nível |
+|---|---|---|
 | [[kv-cache-attention]] | Entender por que a fase de decode é memory-bound e o que fazer a respeito: por que só K e V são cacheados, a fórmula de VRAM do cache — que cresce com `batch × seq_len` e pode superar os próprios pesos —, e MHA contra MQA contra GQA, com Llama 3 8B pagando 25% do cache de MHA por usar 8 KV heads para 32 Q heads. Traz Paged Attention do vLLM contra fragmentação (com copy-on-write para beam search), sliding window com sink tokens do Mistral, e Flash Attention por IO-awareness, com as versões e o que cada uma suporta de custom masking. | advanced |
 | [[quantization]] | Comprimir o modelo sabendo exatamente o que se perde: a tabela de dtypes de FP32 a INT2, por que BF16 supera FP16 no treino, quantização simétrica contra assimétrica e por bloco, outlier channels e SmoothQuant. Compara GPTQ (segunda ordem, lento de quantizar) contra AWQ (rápido, roda também em Metal) contra bitsandbytes on-the-fly, e traz a tabela de perplexidade por variante GGUF — Q4_K_M com +6.6% sobre FP16 contra Q2_K com +50.8%. O aviso que fecha a nota: perplexidade baixa em WikiText-2 não garante código nem raciocínio — valide na tarefa real antes de escolher a quantização de produção. | advanced |
 | [[vram-estimation]] | Responder "isso cabe no meu hardware?" antes de comprar GPU ou provisionar instância: as regras rápidas (inferência ≈ params × bytes × 1.2, treino completo ≈ params × 16) e as fórmulas detalhadas para inferência, full fine-tuning com Adam e QLoRA, com quatro exemplos numéricos fechados. Traz a tabela de referência de Phi-3 a Llama 3 405B por dtype e o script que checa automaticamente qualquer modelo do HuggingFace. Três correções que evitam OOM em produção: `nvidia-smi` inclui overhead de driver, GGUF de 5 GB em disco pede 7-9 GB em runtime, e o teto prático de uso é 80-85% da VRAM. | advanced |
 | [[inference-engines]] | Escolher com que engine servir e por qual métrica cobrar a decisão: TTFT, TBT/TPOT, throughput e percentis de latência; continuous batching por iteração contra batching estático; tensor contra pipeline parallelism, com o alerta de que tensor parallelism sem NVLink não se sustenta em produção. Compara vLLM, TensorRT-LLM, llama.cpp, Ollama e HF Transformers por throughput, latência e prontidão para produção, cobre GPU offloading parcial por camada, speculative decoding com draft model 10-20x menor, e chunked prefill — que impede um prompt longo de travar todos os decodes ativos. | advanced |
+
+## Fundamentos — hardware — `tech/03-ai-ml/fundamentals/`
+
+| Nota | O que responde | Nível |
+|---|---|---|
 | [[gpu-architecture]] | Diagnosticar se a lentidão é de memória ou de compute em vez de chutar: hierarquia CUDA até o warp de 32 threads, warp divergence, ocupância, CUDA cores contra Tensor Cores (e como ligar TF32 e BF16 no PyTorch), e a hierarquia de memória do registro à HBM. O instrumento central é arithmetic intensity com roofline — inferência batch=1 fica em ~1.3 FLOPs/byte, fortemente memory-bound, enquanto treino batch=128 vira compute-bound na H100. Traz o comparativo de GPUs por bandwidth, que é o número que decide inferência single-request e não os TFLOPS, mais NVLink contra PCIe, kernel fusion e profiling com `torch.profiler`. | advanced |
 | [[specialized-hardware]] | Avaliar quando sair da GPU e o que se perde ao sair: systolic array do TPU com XLA obrigatório, execução determinística do Groq LPU — que **não treina** —, wafer-scale da Cerebras, Trainium e Inferentia com o Neuron SDK, Neural Engine da Apple com MLX, e a aposta open-source da Tenstorrent. Traz a tabela comparativa por TFLOPS, memória e caso de uso, além de código de JAX em TPU e de medição de latência Groq contra OpenAI. O eixo da decisão é sempre o mesmo: eficiência radical no subconjunto certo de operações, paga em portabilidade e lock-in de vendor. | advanced |
+
+## Fundamentos — avaliação — `tech/03-ai-ml/fundamentals/`
+
+| Nota | O que responde | Nível |
+|---|---|---|
 | [[benchmarks-evals]] | Ler benchmark como sinal de tendência e nunca como medida absoluta de capacidade: MMLU, HumanEval com pass@k, MATH, BIG-Bench Hard, Chatbot Arena com Elo e MT-Bench, cada um com suas limitações declaradas. Cobre rodar eval localmente com lm-evaluation-harness e construir eval privado do próprio domínio. As duas razões pelas quais o número publicado mente: **contaminação de dados** infla o score de qualquer benchmark famoso, e sensibilidade de prompt move o MMLU em 2-5 pontos com mudança de capitalização ou ordem das alternativas. Traz também os vieses documentados do LLM-as-judge — verbosidade, self-preference, posição e sycophancy — com a mitigação de cada um. | advanced |
 
 ## Frameworks de IA — `tech/03-ai-ml/ai-frameworks/`
