@@ -256,7 +256,8 @@ Antes da conclusão no documento, nunca depois:
 ## Estrutura do documento
 
 Monte o relatório sobre [[stock-analysis-template]] — seções, tabelas e checklist final. Ver
-[[templates]] para os demais entregáveis recorrentes da casa, e [[investment-checklist]] para a
+[[finance/00-index/templates]] para os demais entregáveis recorrentes da casa, e
+[[investment-checklist]] para a
 due diligence completa que sustenta os passos 2 a 4.
 
 Os passos acima não substituem o template: eles definem **o que precisa estar dentro de cada
