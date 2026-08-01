@@ -29,6 +29,7 @@ Se a pergunta for sobre um território (fatores, estratégias, backtesting, risc
 | Dados point-in-time | [[backtesting-basics]] | [[capm]], [[sharpe-ratio]] |
 | Overfitting e validação out-of-sample | [[backtesting-basics]] | [[sharpe-ratio]], [[factor-investing]] |
 | Número de tentativas (`N`) e Sharpe inflado | [[sharpe-ratio]] | [[backtesting-basics]], [[capm]] |
+| Amostra curta e efeito mínimo detectável | [[statistical-power]] | [[sharpe-ratio]] (erro-padrão do Sharpe em `T` pequeno), [[event-study]] (`n` = eventos, e o clustering que o encolhe) |
 | Correlação instável em crise | [[portfolio-theory-mpt]] | [[capm]], [[position-sizing]], [[momentum-strategies]] |
 | Não-normalidade e risco de cauda | [[sharpe-ratio]] | [[portfolio-theory-mpt]], [[momentum-strategies]], [[capm]] |
 | Drawdown — cálculo e uso como restrição | [[backtesting-basics]] | [[sharpe-ratio]], [[position-sizing]], [[factor-investing]], [[momentum-strategies]] |

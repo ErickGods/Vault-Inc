@@ -31,7 +31,7 @@ vir da tabela: ficam sempre em `quant/00-index/`, com o nome do arquivo igual ao
 |---|---|---|---|
 | Modelos de fatores | [[factor-models]] | `quant/03-factor-models/` | CAPM, beta, Fama-French, Carhart, prêmios de fator |
 | Estratégias | [[strategies]] | `quant/04-strategies/` | momentum cross-sectional e time-series, trend following, dual momentum |
-| Backtesting | [[backtesting]] | `quant/05-backtesting/` | walk-forward, vieses, custos e slippage, métricas, Monte Carlo |
+| Backtesting | [[backtesting]] | `quant/05-backtesting/` | walk-forward, vieses, custos e slippage, métricas, Monte Carlo, event study, poder estatístico e MDE |
 | Risco e performance | [[risk-analytics]] | `quant/06-risk-analytics/` | Sharpe e Deflated Sharpe, média-variância, dimensionamento de posição |
 
 ## Temas transversais
