@@ -14,3 +14,6 @@ desktop.ini
 
 # Binaries
 *.zip
+
+# plano gerado por migrate_house.py — artefato de trabalho, nao versionado
+scripts/maps/*-plan.json
