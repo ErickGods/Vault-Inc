@@ -11,9 +11,9 @@ contém o mapa. Use assim: identifique na tabela de domínios ativos qual territ
 tarefa, carregue o `_index.md` daquele domínio, leia a coluna "O que responde" e abra
 **apenas** as notas que a tarefa exige. Três saltos, e nada de varrer o vault com Glob.
 
-**Como abrir uma nota.** Wikilinks (`[[capm]]`) não carregam caminho — são identificadores,
+**Como abrir uma nota.** Wikilinks não carregam caminho — são identificadores,
 não paths. O arquivo fica em `<pasta>/<nome-da-nota>.md`, onde `<pasta>` vem da coluna
-**Pasta** da tabela abaixo. Exemplo: `[[capm]]` é o arquivo `capm.md` dentro da pasta
+**Pasta** da tabela abaixo. Exemplo: a nota `capm`, listada em [[factor-models]], é o arquivo `capm.md` dentro da pasta
 `quant/03-factor-models/`. Os índices de domínio e o `_topics.md` têm pasta fixa em vez de
 vir da tabela: ficam sempre em `quant/00-index/`, com o nome do arquivo igual ao do wikilink —
 `[[risk-analytics]]` é o arquivo `quant/00-index/risk-analytics.md`.
