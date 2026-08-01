@@ -1,9 +1,11 @@
 ---
 tags: [claude-code, core-features, agents, orquestração, vault-inc]
-status: active
+house: shared
+domain: claude/core-features
 level: intermediate
-updated: 2026-04-19
+status: active
 created: 2026-04-19
+updated: 2026-08-01
 ---
 
 # Agent Teams — Orquestração Multi-Agente

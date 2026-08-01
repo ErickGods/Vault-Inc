@@ -1,10 +1,12 @@
 ---
 tags: [claude-code, fundamentals]
-status: active
-level: basic
-updated: 2026-04-19
-created: 2026-04-19
 aliases: [Context Window, Gerenciamento de Contexto, Tokens Claude Code]
+house: shared
+domain: claude/fundamentals
+level: intro
+status: active
+created: 2026-04-19
+updated: 2026-08-01
 ---
 
 # Context Window Management
