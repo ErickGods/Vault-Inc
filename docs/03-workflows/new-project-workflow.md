@@ -90,7 +90,7 @@ graph TD
 ## Templates Usados
 
 - [[project-intake-template]] — Step 1.1
-- [[adr-template]] — Step 1.5
+- [[adr]] — Step 1.5
 - [[daily-standup-template]] — Step 3.5
 - [[code-review-workflow]] — durante implementação
 

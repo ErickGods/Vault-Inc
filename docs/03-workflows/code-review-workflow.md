@@ -67,7 +67,7 @@ graph TD
 
 - [ ] **4.1** Lead Engineer faz review final (arquitetura, padrões)
 - [ ] **4.2** Se aprovado: merge
-- [ ] **4.3** Se necessário ADR: criar usando [[adr-template]]
+- [ ] **4.3** Se necessário ADR: criar usando [[adr]]
 
 ## Review Checklist — QA
 
@@ -89,4 +89,4 @@ graph TD
 ## Related
 
 - [[new-project-workflow]] — workflow pai
-- [[adr-template]] — para decisões de arquitetura durante review
+- [[adr]] — para decisões de arquitetura durante review

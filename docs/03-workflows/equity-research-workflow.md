@@ -87,5 +87,5 @@ graph TD
 
 ## Related
 
-- [[🗺️ Investments-MOC]] — índice de investimentos
+- [[investments]] — índice de investimentos
 - [[new-project-workflow]] — workflow similar para projetos tech

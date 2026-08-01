@@ -184,7 +184,7 @@ updated: {{YYYY-MM-DD}}
 
 ## Related
 
-- [[🗺️ Investments-MOC]]
+- [[investments]]
 - [[growth-vs-value]]
 - [[equity-research-workflow]] — workflow completo de pesquisa
 ```

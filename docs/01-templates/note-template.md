@@ -110,5 +110,5 @@ aliases: [{{Alias Principal}}, {{Alias Alternativo}}]
 ## Related
 
 - [[moc-template]] — Template para criar Maps of Content
-- [[skill-template]] — Variante específica para notas de skill técnica
+- [[technology-note]] — Variante específica para notas de skill técnica
 - [[🗺️ Docs-Home]] — Central de templates e workflows

@@ -1,77 +1,118 @@
 # Vault Inc Library
 
-Open-source knowledge base by **Vault Inc** covering **technology** and **finance** — built as an [Obsidian](https://obsidian.md) vault with AI-powered agents for financial research.
+Base de conhecimento aberta da **Vault Inc** — uma casa de análises quant finance, research e
+wealth management. Vault do [Obsidian](https://obsidian.md) que serve como fonte de verdade para
+agentes de IA construídos sobre o [Claude Code](https://claude.com/claude-code).
 
-## Structure
+Não é uma coleção de notas. É a camada de conhecimento de três casas que produzem trabalho real.
+
+## As três casas
+
+| Casa | Mandato |
+|---|---|
+| **`finance/`** | Research fundamentalista, wealth management e crédito — a casa que fala com o cliente |
+| **`quant/`** | Traduz tese discricionária em hipótese testável, e hipótese validada em código |
+| **`tech/`** | Engenharia de software, infraestrutura e dados — a casa que constrói |
+
+A **quant** é o eixo do projeto, e a razão é estrutural: ela traduz nos dois sentidos. Pega uma
+tese de research ("esta empresa tem vantagem competitiva") e a transforma em hipótese com
+universo, período e critério de rejeição. Depois pega a hipótese validada e a transforma em código
+que roda. Nenhuma das outras duas casas faria os dois movimentos.
 
 ```
-Vault-Inc-Library/
-├── tech-vault/          # Technology knowledge base
-│   ├── 01-skills/       # Languages, frameworks, databases, tools
-│   ├── 02-devops/       # CI/CD, containers, IaC, monitoring, networking
-│   ├── 03-ai-ml/        # LLM patterns, AI frameworks, MCP, tools
-│   ├── 04-architecture/ # Patterns, messaging, cloud services, ADRs
-│   ├── 05-data-eng/     # Pipelines, streaming, storage, transformation
-│   ├── 06-snippets/     # Ready-to-use code snippets
-│   ├── 07-references/   # Cheatsheets (git, regex, Big-O)
-│   └── 08-templates/    # Project, ADR, skill, weekly review templates
-│
-├── finance-vault/       # Finance & investments knowledge base
-│   ├── 01-fundamentals/ # Core concepts (compound interest, risk, TVM)
-│   ├── 02-investments/  # Equities, fixed income, funds, derivatives, alts
-│   ├── 03-analysis/     # Fundamental, technical, quantitative, macro
-│   ├── 04-personal/     # Budgeting, FIRE, tax optimization, insurance
-│   ├── 05-accounting/   # Financial statements, ratios, red flags
-│   ├── 06-markets/      # B3, US markets, cycles, participants
-│   ├── 07-psychology/   # Behavioral finance, biases, risk tolerance
-│   ├── 08-frameworks/   # MPT, position sizing, capital allocation
-│   ├── 09-glossary/     # Financial terms (PT-BR and EN)
-│   ├── 10-snippets/     # Python finance snippets, formulas
-│   ├── 11-templates/    # Stock analysis, portfolio review, trade journal
-│   └── agents/          # AI-powered financial research agents
-│       └── financial-research-house/
-│
-└── docs/                # Project docs, canvas boards, plans
+finance/  ──tese──▶  quant/  ──especificação──▶  tech/
+   ◀──evidência──      ◀──dados / infra / código──
 ```
 
-## Highlights
+## O problema que este repositório resolve
 
-- **180+ interconnected notes** with Obsidian backlinks and MOCs (Maps of Content)
-- **Financial Research House** — AI agents (built for [Claude Code](https://claude.com/claude-code)) that act as an equity research analyst and private banker, using the knowledge base as their source of truth
-- **Bilingual content** — Portuguese (BR) primary, English technical terms preserved
-- **Covers both Brazilian and US markets** — Tesouro Direto, B3, CDB/LCI/LCA alongside bonds, ETFs, and US market structure
+Uma base de conhecimento grande é inútil para um agente se ele não consegue achar o que precisa
+sem ler tudo. A abordagem ingênua — listar arquivos no prompt do agente — não escala: um agente
+desta casa chegou a citar 23 arquivos diretamente, e cada nota nova exigia editar o prompt à mão.
 
-## How to Use
+A solução aqui são **três saltos com custo controlado**:
 
-### As an Obsidian vault
+1. o agente carrega o índice mestre da casa e vê os domínios
+2. abre o índice do domínio, cuja coluna **"O que responde"** existe para ele decidir *não* abrir
+   uma nota
+3. lê apenas o que a tarefa exige
 
-1. Clone this repo
-2. Open the root folder (or `tech-vault/` / `finance-vault/` individually) in [Obsidian](https://obsidian.md)
-3. Navigate using the MOC files in `00-moc/`
+**Nota nova custa uma linha em um índice e zero edição em qualquer prompt de agente.**
 
-### With Claude Code agents
+Medido num teste real: um agente de equity research, diante de uma cobertura de concessionária de
+energia, abriu **10 de 74 notas** da casa financeira — e nunca precisou saber que existiam
+domínios de psicologia ou glossário.
 
-The `finance-vault/agents/financial-research-house/` contains agent definitions that can be installed in Claude Code:
+## O que tem dentro
+
+```
+├── finance/          74 notas — fundamentos, investimentos, análise, contabilidade,
+│                     mercados, psicologia, frameworks, glossário
+├── quant/             7 notas — fatores, estratégias, backtesting, risco e performance
+├── tech/             89 notas — linguagens e frameworks, DevOps, IA/ML,
+│                     arquitetura, engenharia de dados
+├── shared/           templates e convenções
+├── .claude/
+│   ├── agents/       20 agentes, organizados por casa
+│   └── skills/       rotinas operacionais com guarda-corpos
+└── scripts/          verificador de integridade do vault
+```
+
+Conteúdo em **português**, com termos técnicos em inglês preservados. Cobre mercado brasileiro
+(B3, Tesouro Direto, CDB/LCI/LCA, JCP, tributação do investidor PF) e americano.
+
+## Agentes e skills
+
+Os agentes ficam em `.claude/agents/<casa>/` e são descobertos nativamente pelo Claude Code ao
+abrir este repositório. As skills são rotinas operacionais rígidas — passos numerados, critérios
+de saída, e uma seção `Nunca`:
+
+| Skill | O que executa |
+|---|---|
+| `hypothesis-test` | Transforma uma tese de mercado em hipótese testável, com critério de rejeição escrito **antes** do teste |
+| `backtest-protocol` | Roda backtest com guarda-corpos: viés de sobrevivência, look-ahead, custos, Deflated Sharpe |
+| `equity-initiation` | Produz relatório de início de cobertura ponta a ponta |
+| `dcf-valuation` | Executa valuation por fluxo de caixa descontado com sensibilidade obrigatória |
+
+A divisão entre nota e skill é deliberada: **a nota explica o quê e o porquê; a skill executa o
+como.** A skill cita a nota, nunca a copia.
+
+## Integridade
+
+O vault tem um verificador próprio, com 66 testes:
 
 ```bash
-# Copy to global agents directory
-cp finance-vault/agents/financial-research-house/*.md ~/.claude/agents/
+python -B scripts/check_links.py . --baseline scripts/baseline.txt
 ```
 
-Then ask Claude to act as the Equity Research Analyst or Private Banker — they'll use the knowledge base to produce analysis.
+Ele falha se surgir qualquer link quebrado novo — comparação por conjunto de alvos, não por
+total, porque comparar totais permite que uma quebra nova seja compensada por progresso em outro
+lugar. Ignora corretamente wikilinks dentro de blocos de código, placeholders de template e a
+sintaxe `[[ ]]` do bash.
 
-## Topics Covered
+## Como usar
 
-### Tech Vault
-Python, TypeScript, Rust | React, Next.js, FastAPI, Django | PostgreSQL, Redis, MongoDB, Supabase | Docker, Kubernetes, Terraform | GitHub Actions, ArgoCD | Kafka, RabbitMQ, NATS | RAG, prompt engineering, multi-agent systems | Clean architecture, event-driven, microservices
+**Como vault do Obsidian:** clone e abra a pasta raiz. Navegue a partir do `_house.md` de cada
+casa.
 
-### Finance Vault
-Valuation (DCF, multiples) | Graham, Buffett, Dalio frameworks | Options, futures, derivatives | Brazilian market (B3, Tesouro Direto, FIIs) | Factor investing, momentum strategies | Behavioral finance | FIRE movement | Portfolio theory (MPT)
+**Com o Claude Code:** abra o repositório e os 20 agentes e 4 skills são descobertos
+automaticamente. Comece pelo `CLAUDE.md` da raiz, que roteia entre as casas.
 
-## License
+Os entregáveis operacionais — report de equity, IPS de cliente, backtest — **não moram aqui**.
+Eles vão para um repositório privado que monta este como submódulo.
+
+## Estado
+
+As casas **quant** e **finance** estão completas — índices, agentes, skills, e ambas validadas
+contra agentes reais executando tarefas de verdade.
+
+A casa **tech** tem as 89 notas migradas e normalizadas, mas apenas 2 dos 8 índices de domínio
+escritos, e seus 9 agentes ainda não foram religados ao índice. Trabalho em andamento.
+
+## Licença
 
 [MIT](LICENSE)
 
 ---
 
-Built by [Vault Inc](https://github.com/ErickGods)
+Construído por [Vault Inc](https://github.com/ErickGods)

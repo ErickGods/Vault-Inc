@@ -115,6 +115,6 @@ Para executar suas tarefas, consulte:
 
 ## Related
 
-- [[skill-template]] — template para skills
+- [[shared/templates/skill|skill]] — template para skills
 - [[agent-teams]] — guia de orquestração multi-agente (claude-vault)
 - [[new-project-workflow]] — workflow que usa os agentes

@@ -18,7 +18,7 @@ Este vault é o repositório central de conhecimento sobre o ecossistema Anthrop
 > Este vault é referência tanto para humanos quanto para agentes de IA da Vault Inc. Os arquivos de patterns e recipes descrevem workflows que agentes podem seguir autonomamente. Os snippets fornecem código reutilizável. O glossário padroniza terminologia usada em prompts e instruções.
 
 > [!tip] Vaults Relacionados
-> - [[🗺️ Home|Finance Vault]] — Conhecimento financeiro, valuation, análise de mercado
+> - [[finance/00-index/_house|Finance Vault]] — Conhecimento financeiro, valuation, análise de mercado
 > - [[🗺️ Tech-Home|Tech Vault]] — Engenharia de software, IA/ML, infraestrutura
 
 ---
@@ -156,7 +156,7 @@ SORT updated DESC
 
 ## 🔗 Conexões com Outros Vaults
 
-- [[🗺️ Home|🏦 Finance Vault]] — Para análise financeira assistida por Claude, ver [[financial-analysis-with-claude]] e [[pitchbook-generation]]
+- [[finance/00-index/_house|🏦 Finance Vault]] — Para análise financeira assistida por Claude, ver [[financial-analysis-with-claude]] e [[pitchbook-generation]]
 - [[🗺️ Tech-Home|💻 Tech Vault]] — Para padrões de engenharia de software com IA, ver [[tdd-with-claude]] e [[debugging-workflow]]
 
 ---

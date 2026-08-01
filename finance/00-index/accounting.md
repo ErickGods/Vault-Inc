@@ -1,0 +1,17 @@
+---
+house: finance
+domain: accounting
+type: index
+updated: 2026-07-29
+---
+
+# Índice — Contabilidade
+
+| Nota | O que responde | Nível |
+|---|---|---|
+| [[income-statement]] | Ler a DRE linha a linha, da receita bruta ao lucro líquido, e julgar a qualidade do crescimento: as quatro margens e o que cada uma revela (bruta é pricing power, EBITDA é eficiência operacional), alavancagem operacional, carga tributária efetiva. Explica por que EBITDA não é caixa e cobre os sinais de manipulação visíveis aqui — receita crescendo com margem encolhendo, "não recorrente" que se repete todo trimestre, despesa capitalizada. | intermediate |
+| [[balance-sheet]] | Julgar solidez financeira antes de julgar lucro: estrutura de ativo e passivo por liquidez e exigibilidade, working capital, dívida líquida, goodwill e tangible book value. Traz a tabela de indicadores derivados com faixa saudável (liquidez corrente > 1,5; DL/EBITDA < 3,0) e os alertas de balanço — recebível crescendo mais que receita, estoque inflando, goodwill acima de 50% do ativo, dívida curta maior que caixa. | intermediate |
+| [[cash-flow-statement]] | Verificar se o lucro vira dinheiro: as três atividades (FCO, FCI, FCFin), método direto vs indireto, FCF, e a distinção FCFF/FCFE que alimenta o DCF. Traz as duas razões de diagnóstico — conversão de caixa (FCO/EBITDA acima de 70%) e quality of earnings (FCO/lucro perto de 1) — e o roteiro que separa empresa em expansão de empresa em decadência via capex vs depreciação. | intermediate |
+| [[key-ratios]] | A referência central de indicadores: rentabilidade (ROE, ROA, ROIC, margens), valuation (P/L, P/VP, EV/EBITDA, P/FCF, DY, PEG), endividamento (D/E, DL/EBITDA, ICR), liquidez, eficiência (giro, DIO, DSO, DPO, CCC) e crescimento — cada um com faixa de referência. Traz DuPont de 3 e 5 fatores com exemplo numérico fechado, mostrando quando um ROE de 20% é margem e quando é alavancagem, e por que ROIC vs WACC é o teste real de criação de valor. Cobre as distorções brasileiras: JCP reduzindo lucro líquido, CDI alto inflando receita financeira, indicadores próprios de banco. | intermediate |
+| [[roe-roic]] | Separar retorno do acionista de qualidade do negócio: as duas fórmulas com o **capital investido definido linha a linha** (o que entra, o que sai, e o ajuste de IFRS 16), e a demonstração numérica de que o mesmo negócio com mais dívida exibe ROE maior sem ter melhorado em nada. Traz DuPont de 3 e 5 fatores com o que cada termo revela sobre o modelo de negócio, o spread ROIC−WACC como teste de criação de valor — e por que crescer com spread negativo destrói valor mais rápido — e as armadilhas: PL negativo, goodwill de aquisição inflando o denominador, JCP deprimindo o ROE contábil, um ano isolado que não é sinal. | intermediate |
+| [[red-flags-accounting]] | Detectar manipulação antes de comprar: técnicas de inflar receita (channel stuffing, bill-and-hold, round-tripping), de esconder despesa (capitalização agressiva, subprovisionamento, cookie jar), passivos fora do balanço e transações com partes relacionadas — cada uma com o sinal quantitativo que a denuncia. Traz o Beneish M-Score completo com as 8 variáveis e o corte de -1,78, os quatro tipos de parecer de auditoria e o que significa cada um, uma checklist por demonstração, e a tabela de limiares de alerta. Disseca Americanas (risco sacado, R$ 25,2 bi) e IRB (ROE 30% incompatível com o setor) mostrando quais sinais eram visíveis antes. | advanced |

@@ -29,9 +29,9 @@ O `docs/` foi projetado para ser consumido tanto por **humanos** (usando os temp
 |----------|------|-----------|---------------|
 | Note Template | [[note-template]] | Base para qualquer nota de conhecimento | Humanos + Agentes |
 | MOC Template | [[moc-template]] | Criar Maps of Content para um domínio | Humanos + Agentes |
-| Skill Template | [[skill-template]] | Documentar uma skill técnica no tech-vault | Humanos + Agentes |
+| Skill Template | [[technology-note]] | Documentar uma skill técnica no tech-vault | Humanos + Agentes |
 | Agent Template | [[agent-template]] | Definir um agente Claude Code em `.claude/agents/` | Agentes |
-| ADR Template | [[adr-template]] | Registrar uma Architecture Decision Record | Humanos + Agentes |
+| ADR Template | [[adr]] | Registrar uma Architecture Decision Record | Humanos + Agentes |
 | Project Template | [[project-template]] | Criar estrutura inicial de projeto | Agentes |
 | Stock Analysis Template | [[stock-analysis-template]] | Análise fundamentalista de ação | Humanos |
 | Weekly Review Template | [[weekly-review]] | Revisão semanal de progresso | Humanos |
@@ -80,8 +80,8 @@ LIMIT 20
 
 | Vault | Home | Domínio |
 |-------|------|---------|
-| Tech Vault | [[tech-vault/00-moc/🗺️ Home\|🖥️ Tech Home]] | Skills técnicas, snippets, arquitetura, DevOps, AI/ML |
-| Finance Vault | [[finance-vault/00-MOC/🗺️ Home\|💰 Finance Home]] | Investimentos, análise, finanças pessoais, macroeconomia |
+| Tech Vault | [[tech-vault/00-moc/home\|🖥️ Tech Home]] | Skills técnicas, snippets, arquitetura, DevOps, AI/ML |
+| Finance Vault | [[finance-vault/00-MOC/_house\|💰 Finance Home]] | Investimentos, análise, finanças pessoais, macroeconomia |
 
 ---
 
