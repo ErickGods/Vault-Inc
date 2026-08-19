@@ -1,192 +1,131 @@
-# Vault Inc Library
+# Vault Inc
 
-Base de conhecimento aberta da **Vault Inc** — uma casa de análises quant finance, research e
-wealth management. É um vault do [Obsidian](https://obsidian.md) que serve como **fonte de verdade
-para agentes de IA** construídos sobre o [Claude Code](https://claude.com/claude-code).
+**Vault Inc é uma casa de análises financeiras operada por agentes de IA.**
 
-Não é uma coleção de notas. É a **camada de conhecimento** de três casas que produzem trabalho
-real — e, principalmente, é um jeito de organizar esse conhecimento para que um agente **ache o que
-precisa sem ler tudo.**
+Ela faz o trabalho de uma equipe de research: analisa empresas, monta e revisa carteiras de
+clientes, avalia crédito, testa estratégias quantitativas e constrói a tecnologia que sustenta
+tudo isso. Só que a equipe é formada por **agentes** construídos sobre o
+[Claude Code](https://claude.com/claude-code).
 
-> **Comece por aqui, conforme quem você é:**
-> - **Só quero ler o conteúdo** → abra a pasta no Obsidian e navegue pelo `_house.md` de cada casa.
-> - **Vou rodar os agentes** → abra o repositório no Claude Code e comece pelo [`CLAUDE.md`](CLAUDE.md) da raiz.
-> - **Quero entender o desenho** → siga lendo. A seção [Como funciona](#como-funciona) é o coração.
-
----
-
-## As três casas
-
-Todo conhecimento é dividido em **casas**. Cada casa tem um mandato, um índice mestre e seus
-próprios agentes.
-
-| Casa | Mandato | A pergunta que responde |
-|---|---|---|
-| **`finance/`** | Research fundamentalista, wealth management e crédito. A casa que **fala com o cliente**. | "Esta empresa vale o preço? Isso cabe na carteira deste cliente?" |
-| **`quant/`** | Traduz tese discricionária em hipótese testável, e hipótese validada em código. | "Este padrão de mercado funciona mesmo? Quanto se pode perder?" |
-| **`tech/`** | Engenharia de software, infraestrutura e dados. A casa que **constrói**. | "Como isso vira código que roda? Como vira infraestrutura?" |
-
-Há ainda uma casa de apoio, **`shared/claude/`**, com o conhecimento sobre operar o próprio Claude
-Code (hooks, MCP, subagentes, skills, janela de contexto).
-
-**A quant é o eixo do projeto**, e a razão é estrutural: ela traduz nos dois sentidos. Pega uma
-tese de research ("esta empresa tem vantagem competitiva") e a transforma em hipótese com universo,
-período e critério de rejeição. Depois pega a hipótese validada e a transforma em código que roda.
-Nenhuma das outras duas casas faria os dois movimentos.
-
-```
-finance/  ──tese──▶  quant/  ──especificação──▶  tech/
-   ◀──evidência──      ◀──dados / infra / código──
-```
-
-### A regra que decide para onde vai cada pergunta
-
-Afirmação sobre **uma empresa** é finance; afirmação sobre **uma população de empresas** é quant.
-
-- *"O ROIC desta empresa foi 18%"* — observação verificável na demonstração → **finance**.
-- *"Empresas com ROIC de 18% superam o índice"* — hipótese estatística → **quant**, sempre.
+Este repositório é o **cérebro da empresa**: o conhecimento que os agentes consultam, os próprios
+agentes e as rotinas de trabalho que eles seguem. Os relatórios e as entregas para clientes ficam
+em um repositório privado — **aqui mora o que faz a Vault Inc funcionar, não os produtos que ela
+entrega.**
 
 ---
 
-## Como funciona
+## Como a empresa é organizada
 
-Uma base de conhecimento grande é inútil para um agente se ele precisa **ler tudo** para achar o
-que importa. A abordagem ingênua — listar os arquivos no prompt do agente — não escala: um agente
-desta casa chegou a citar 23 arquivos direto no prompt, e **cada nota nova exigia editar o prompt à
-mão.**
+A Vault Inc se divide em três **casas**. Cada casa tem um mandato claro e uma equipe de agentes
+especialistas — pense em cada agente como um profissional com uma função.
 
-A solução aqui são **três saltos com custo controlado.** O agente nunca varre o vault; ele desce
-por índices, decidindo a cada passo o que **não** precisa abrir:
+### 🏛️ finance — a casa que fala com o cliente
 
-```
-1. _house.md  ──▶  2. índice do domínio  ──▶  3. a(s) nota(s) que a tarefa exige
-   (o mapa da casa)     (a coluna "O que responde"       (lê só o necessário e para)
-                         existe para ele decidir
-                         NÃO abrir uma nota)
-```
+Research fundamentalista, gestão de patrimônio e crédito. Toda entrega desta casa é uma **decisão
+de alocação de capital** — comprar, vender, manter, dimensionar — ou a análise que a sustenta.
+Quem assina responde por ela na frente de quem confiou o patrimônio.
 
-1. **Índice mestre** (`<casa>/00-index/_house.md`) — não contém conhecimento, contém o **mapa**:
-   lista os domínios ativos e onde cada um mora.
-2. **Índice do domínio** — cada nota aparece com uma coluna **"O que responde"**. Ela existe para o
-   agente decidir, sem abrir o arquivo, se aquela nota serve à tarefa.
-3. **A nota** — ele abre **apenas** o que a tarefa exige e para quando tem o suficiente.
+> Agentes: `equity-research-analyst`, `private-banker`, `credit-research-analyst`,
+> `macro-strategist`, `pe-analyst`, `compliance-officer`.
 
-Para preocupações **transversais** (custo, liquidez, tributação, viés, correlação em crise), o
-salto 2 usa `<casa>/00-index/_topics.md` em vez de um domínio — porque nenhum domínio sozinho
-responde a essas.
+### 📊 quant — a casa que testa se a ideia funciona
 
-**O ganho que faz o desenho escalar:** nota nova custa **uma linha** em um índice e **zero edição**
-em qualquer prompt de agente.
+Traduz nas duas direções, e é a única que faz isso: pega uma tese de research ("esta empresa tem
+vantagem competitiva") e a transforma em **hipótese testável**; depois pega a hipótese validada e a
+transforma em **código que roda**. Toda entrega é uma dessas traduções, ou a evidência que a
+sustenta.
 
-> **Exemplo medido, num teste real.** Um agente de equity research, diante de uma cobertura de
-> concessionária de energia, abriu **10 notas** da casa financeira — e nunca precisou saber que
-> existiam os domínios de psicologia ou de glossário. Ele desceu pelos índices, leu a coluna "O que
-> responde" e ignorou o resto.
+> Agentes: `quant-researcher`, `quant-developer`, `risk-quant`, `market-data-quant`.
 
-A regra de ouro para os agentes: **nunca use `Glob`, `Grep`, `ls` ou `find` para localizar uma
-nota.** Se o caminho não sai do índice, o defeito é do índice — e precisa ser reportado, não
-contornado.
+### 🔧 tech — a casa que constrói
+
+Engenharia de software, infraestrutura e dados. O que sai daqui roda, é deployado e é monitorado.
+Toda entrega é código em produção, infraestrutura provisionada ou pipeline de dados em operação.
+
+> Agentes: `backend`, `frontend`, `data-engineer`, `devops`, `ml-engineer`, `lead-engineer`,
+> `qa`, `security`, `ui-ux`.
+
+**Uma regra simples separa finance de quant:** afirmação sobre **uma empresa** é finance;
+afirmação sobre **uma população de empresas** é quant. "O ROIC desta empresa foi 18%" é finance.
+"Empresas com ROIC de 18% superam o índice" é quant.
 
 ---
 
-## O que tem dentro
+## Como o trabalho acontece
 
 ```
-├── finance/          ~75 notas — fundamentos, investimentos, análise, contabilidade,
-│                     mercados, psicologia, frameworks, glossário
-├── quant/            ~10 notas — fatores, estratégias, backtesting, risco e performance
-├── tech/             ~90 notas — linguagens e frameworks, DevOps, IA/ML,
-│                     arquitetura, engenharia de dados
-├── shared/claude/    ~13 notas — operar o Claude Code (hooks, MCP, subagentes, skills)
-├── docs/             templates, workflows e canvas do Obsidian
-├── .claude/
-│   ├── agents/       20 agentes, organizados por casa
-│   └── skills/        4 skills — rotinas operacionais com guarda-corpos
-└── scripts/          verificador de integridade do vault
+você pede uma tarefa
+      │
+      ▼
+o agente certo, da casa certa, assume
+      │
+      ├─▶ consulta a base de conhecimento (sem ler tudo — ele navega por índices)
+      ├─▶ segue uma skill quando a tarefa exige rigor (passos, critérios, guarda-corpos)
+      │
+      ▼
+o entregável final vai para o repositório privado da empresa
 ```
 
-Conteúdo em **português**, com termos técnicos em inglês preservados. Cobre mercado brasileiro (B3,
-Tesouro Direto, CDB/LCI/LCA, JCP, tributação do investidor PF) e americano.
+**A base de conhecimento** é o que cada agente sabe. Em vez de ler o repositório inteiro, o agente
+desce por índices: parte do mapa da casa, escolhe o assunto e abre **só** as notas que a tarefa
+exige. É isso que permite a base crescer sem deixar os agentes mais lentos.
 
-**Entregáveis não moram aqui.** Report de equity, IPS de cliente, backtest e memo de PE vão para o
-repositório privado `Vault-Inc-Workspace`, que monta este aqui como submódulo em `library/`.
-
----
-
-## Agentes e skills
-
-Os **agentes** ficam em `.claude/agents/<casa>/` e são descobertos nativamente pelo Claude Code ao
-abrir este repositório. Cada agente carrega o **bloco de roteamento** que o ensina a navegar pelos
-três saltos — ele não cita notas por nome, aprende a **achá-las** pelo índice da casa.
-
-As **skills** são rotinas operacionais rígidas — passos numerados, critérios de saída e uma seção
-`Nunca`:
+**As skills** são as rotinas rígidas da casa — passos numerados, critérios de saída e uma seção
+`Nunca`. Elas garantem que trabalho sensível saia sempre com o mesmo rigor:
 
 | Skill | O que executa |
 |---|---|
-| `hypothesis-test` | Transforma uma tese de mercado em hipótese testável, com critério de rejeição escrito **antes** do teste |
+| `equity-initiation` | Relatório de início de cobertura de uma ação, ponta a ponta |
+| `dcf-valuation` | Valuation por fluxo de caixa descontado, com sensibilidade obrigatória |
+| `hypothesis-test` | Transforma uma ideia de mercado em hipótese testável, com critério de rejeição escrito **antes** do teste |
 | `backtest-protocol` | Roda backtest com guarda-corpos: viés de sobrevivência, look-ahead, custos, Deflated Sharpe |
-| `equity-initiation` | Produz relatório de início de cobertura de uma ação, ponta a ponta |
-| `dcf-valuation` | Executa valuation por fluxo de caixa descontado com matriz de sensibilidade obrigatória |
-
-A divisão entre nota e skill é deliberada: **a nota explica o quê e o porquê; a skill executa o
-como.** A skill cita a nota, nunca a copia.
 
 ---
 
-## Integridade
+## O que tem no repositório
 
-O vault tem um verificador próprio, coberto por **66 testes**:
-
-```bash
-# o portão: falha se surgir qualquer link quebrado que não estava na linha de base
-python -B scripts/check_links.py . --baseline scripts/baseline.txt
-
-# a suíte de testes do próprio verificador
-python -B -m unittest discover -s scripts/tests
+```
+├── finance/   quant/   tech/    o conhecimento de cada casa, organizado por assunto
+├── shared/                       conhecimento comum + operar o próprio Claude Code
+├── .claude/
+│   ├── agents/                   os 20 agentes da empresa, por casa
+│   └── skills/                   as rotinas de trabalho
+├── docs/                         templates e fluxos de trabalho
+└── scripts/                      verificador que mantém a base íntegra
 ```
 
-A comparação é **por conjunto de alvos, não por total** — comparar totais deixaria uma quebra nova
-ser compensada por progresso em outro lugar. O verificador ignora corretamente wikilinks dentro de
-blocos de código, placeholders de template e a sintaxe `[[ ]]` do bash.
-
-Migração que renomeia arquivo usa `scripts/migrate_house.py`, que emite um plano, hasheia o estado
-do repositório e só aplica preso àquele hash — se algo mudou entre planejar e aplicar, aborta antes
-de escrever.
+Conteúdo em **português**, com termos técnicos em inglês preservados. Cobre mercado brasileiro
+(B3, Tesouro Direto, CDB/LCI/LCA, JCP, tributação do investidor PF) e americano.
 
 ---
 
-## Como usar
+## Como explorar
 
-**Como vault do Obsidian:** clone e abra a pasta raiz. Navegue a partir do `_house.md` de cada
-casa — é o mapa de tudo que existe ali.
+- **Só quero ler** — abra a pasta no [Obsidian](https://obsidian.md) e navegue pelo `_house.md`
+  de cada casa.
+- **Quero colocar os agentes para trabalhar** — abra o repositório no Claude Code. Os 20 agentes e
+  as skills são reconhecidos automaticamente; comece pelo [`CLAUDE.md`](CLAUDE.md) da raiz e peça
+  uma tarefa.
 
-**Com o Claude Code:** abra o repositório e os 20 agentes e 4 skills são descobertos
-automaticamente. Comece pelo [`CLAUDE.md`](CLAUDE.md) da raiz, que roteia entre as casas e explica
-os três saltos. Depois, é só pedir a tarefa — o agente certo se vira para achar o conhecimento.
+A base tem um verificador próprio, com 66 testes, que impede links quebrados de entrarem:
+
+```bash
+python -B scripts/check_links.py . --baseline scripts/baseline.txt
+```
 
 ---
 
 ## Estado
 
-As **três casas estão religadas e navegáveis**: índice mestre, índice de temas transversais e
-índices de domínio completos (com a coluna "O que responde"), e os **20 agentes carregam o bloco de
-roteamento**.
+As três casas estão **montadas e funcionando**: cada uma tem seus índices completos e seus agentes
+prontos para navegar pelo conhecimento.
 
-- **quant** e **finance** — completas e **validadas contra agentes reais** executando tarefas de
-  verdade. O teste é invocar um agente com uma demanda concreta e exigir o rastro exato de arquivos
-  abertos; ele já revelou dois defeitos que nenhuma verificação estática pegaria.
-- **tech** — 89 notas migradas e normalizadas, índices escritos e os 9 agentes religados. Falta o
-  passo de **validação contra agente real** — a mesma prova que fechou as outras duas casas.
-- **shared/claude** — conteúdo escrito e índice montado; integração final à estrutura de casas em
-  andamento.
+- **finance** e **quant** — completas e testadas com agentes reais executando tarefas de verdade.
+- **tech** — conhecimento e agentes prontos; falta o mesmo teste com agentes reais que fechou as
+  outras duas.
 
 ---
 
 ## Licença
 
-[MIT](LICENSE)
-
----
-
-Construído por [Vault Inc](https://github.com/ErickGods)
+[MIT](LICENSE) · Construído por [Vault Inc](https://github.com/ErickGods)
